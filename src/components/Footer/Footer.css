@@ -1,0 +1,11 @@
+.footerItems {
+    display: flex; 
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252, 100%));
+    color: white;
+    text-align: center;
+    height: 150px;
+}
