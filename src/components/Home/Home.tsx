@@ -1,23 +1,15 @@
 import './Home.css'
-import { Search, Banner } from '..'
+import { Banner } from '../../components'
+import { FastAccess } from '../FastAccess/FastAccess'
 
-
-const dispatchCpfCnpj = (event: any) => {
-    console.log('eae', event)
-}
-
-export const Home = () => {
-
+export const Home: React.FC = () => {
     return (
-        <div className="container">
-            <Banner />
+        <>
+           <Banner />
             <div>
                 <h2 className="page-title">Início</h2>
             </div>
-            <div className="search-bar">
-                <Search title="Consultar CPF / CNPJ" formValues={dispatchCpfCnpj} maxLength={12} />
-                <Search title="Consultar Processos" mask="999999" formValues={dispatchCpfCnpj} />
-            </div>
-        </div>
+            <FastAccess />
+        </>
     )
 }

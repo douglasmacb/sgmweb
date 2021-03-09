@@ -9,7 +9,7 @@ interface MenuItem {
     url: string
 }
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
     const [clicked, setClicked] = React.useState(false)
 
     const handleClick = () => {
@@ -34,7 +34,7 @@ export const Navbar = () => {
                     )
                 })}
             </ul>
-            <Button cName="btn-entrar">Entrar</Button>
+            <a href="/login"><Button cName="btn-entrar">Entrar</Button></a>
         </nav>
     ) 
 }
