@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from './components'
-import { HomePage, LoginPage } from './pages';
+import { HomePage } from './pages';
+import LoginPage from './pages/Login/LoginPage'
 import './App.css'
 
 function App() {

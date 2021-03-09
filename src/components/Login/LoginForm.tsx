@@ -4,6 +4,7 @@ import { FormikProps } from 'formik'
 import './LoginForm.css'
 
 export interface Props {
+    loading?: boolean
 }
 
 interface FormValues {
@@ -15,9 +16,9 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
     const {
         values,
         errors,
+        isSubmitting,
         handleChange,
         handleSubmit,
-        isSubmitting,
     } = props;
  
     return (
