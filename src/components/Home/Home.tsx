@@ -1,28 +1,22 @@
-import * as React from 'react'
 import './Home.css'
-import { Search } from '..'
+import { Search, Banner } from '..'
 
 
-const submitCpfCnpjSearch: React.FormEventHandler<HTMLFormElement>  = (event: any) => {
-    event.preventDefault();
-    console.log(event)
+const dispatchCpfCnpj = (event: any) => {
+    console.log('eae', event)
 }
 
 export const Home = () => {
 
     return (
         <div className="container">
+            <Banner />
             <div>
-                <h3 className="page-title">Início</h3>
+                <h2 className="page-title">Início</h2>
             </div>
             <div className="search-bar">
-                <Search title="Consultar CPF / CNPJ" 
-                    maxInputLength={11} 
-                    handleSubmit={submitCpfCnpjSearch} 
-                />
-                <Search 
-                    title="Consultar Status do Processo" 
-                />
+                <Search title="Consultar CPF / CNPJ" formValues={dispatchCpfCnpj} maxLength={12} />
+                <Search title="Consultar Processos" mask="999999" formValues={dispatchCpfCnpj} />
             </div>
         </div>
     )

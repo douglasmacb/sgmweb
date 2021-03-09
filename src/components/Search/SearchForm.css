@@ -1,12 +1,12 @@
 .search-form{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: white;
     padding: 25px;
     height: 10rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
 
 .search-form .input {
     height: 2rem;
@@ -17,8 +17,27 @@
     margin-right: 10px;
 }
 
+.field-area {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.field-area > button {
+    margin-top: 0.6rem;
+    height: 30px;
+}
+
 .search-form .title {
     font-weight: bold;
+}
+
+.errors {
+    display: flex;
+    padding-top: 0.5rem;
+    color:brown;
+    font-weight: bold;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 1024px) {
@@ -26,6 +45,7 @@
         display: block;
         padding: 25px;
         margin-top: 15px;
+        height: 100%;
     }
 
     .search-form .input {
@@ -34,7 +54,8 @@
     }
 
     .field-area > button {
-        margin-top: 0.5rem;
+        display: block;
+        margin-top: 1.3rem;
     }
 }
 
