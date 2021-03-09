@@ -1,8 +1,7 @@
-import './Home.css'
-import { Banner } from '../../components'
-import { FastAccess } from '../FastAccess/FastAccess'
+import { Banner, FastAccess } from '../../components'
+import './HomePage.css'
 
-export const Home: React.FC = () => {
+export const HomePage: React.FC = () => {
     return (
         <>
            <Banner />
