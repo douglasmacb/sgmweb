@@ -1,23 +1,40 @@
-.search {
-    display: inline-block;
+.search-form{
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 25px;
-    width: 25rem;
-    height: 7.5rem;
+    height: 10rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.search input {
-    margin-right: 5px;
-}
 
-.search .input {
-    height: 1.7rem;
+.search-form .input {
+    height: 2rem;
+    width: 18rem;
     font-size: 16px;
     text-align: center;
     margin-top: 10px;
+    margin-right: 10px;
 }
 
-.search .title {
+.search-form .title {
     font-weight: bold;
 }
+
+@media screen and (max-width: 1024px) {
+    .search-form {
+        display: block;
+        padding: 25px;
+        margin-top: 15px;
+    }
+
+    .search-form .input {
+        display: block;
+        margin-top: 20px;
+    }
+
+    .field-area > button {
+        margin-top: 0.5rem;
+    }
+}
+

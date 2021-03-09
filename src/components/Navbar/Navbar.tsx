@@ -18,7 +18,10 @@ export const Navbar = () => {
 
     return (
         <nav className="NavbarItems">
-            <h1 className="navbar-logo">Prefeitura de Bom Destino</h1>
+            <div className="navbar-logo">
+                <h1>Prefeitura</h1>
+                <h1>Bom Destino</h1>
+            </div>
             <div className="menu-icon" onClick={handleClick}>
                 <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             </div>
@@ -31,7 +34,7 @@ export const Navbar = () => {
                     )
                 })}
             </ul>
-            <Button>Entrar</Button>
+            <Button cName="btn-entrar">Entrar</Button>
         </nav>
     ) 
 }

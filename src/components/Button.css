@@ -12,7 +12,6 @@
 }
 
 .btn:hover {
-    padding: 8px 20px;
     transition: all 0.3s ease-out;
     background: black;
     color: white;
@@ -56,3 +55,10 @@
     font-size: 20px;
     color: #fff;
 }
+
+@media screen and (max-width: 960px) {
+    .btn-entrar {
+        display: none;
+    }
+}
+

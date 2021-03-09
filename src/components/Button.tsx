@@ -16,9 +16,11 @@ const SIZES = [
 export interface Props {
     children?: string
     type?: 'submit' | 'reset' | 'button'
-    onClick?: any
+    onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
     buttonStyle?: string
     buttonSize?: string
+    cName?: string,
+    value?: 'string | number | readonly string[] | undefined'
 }
 
 export const Button: React.FC<Props> = (props) =>  {
@@ -27,7 +29,8 @@ export const Button: React.FC<Props> = (props) =>  {
         buttonSize,
         onClick,
         type,
-        children
+        children,
+        cName,
     } = props;
     let checkButtonStyle = STYLES[0]
     let checkButtonSize = SIZES[0]
@@ -39,7 +42,7 @@ export const Button: React.FC<Props> = (props) =>  {
         checkButtonSize = buttonSize
     }
     return (
-        <button className={`btn ${checkButtonStyle} ${checkButtonSize}`} onClick={onClick} type={type}>
+        <button className={`btn ${checkButtonStyle} ${checkButtonSize} ${cName}`} onClick={onClick} type={type}>
             {children}
         </button>
     )

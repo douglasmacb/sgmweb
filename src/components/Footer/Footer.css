@@ -9,3 +9,24 @@
     text-align: center;
     height: 150px;
 }
+
+.social-medias {
+    display: flex;
+}
+
+.social-medias > p {
+    margin-top: 1rem;
+}
+
+.social-medias > i {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.social-medias .fa-facebook-square {
+    font-size: 30px;
+}
+
+.social-medias .fa-instagram-square {
+    font-size: 30px;
+}

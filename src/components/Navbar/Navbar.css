@@ -59,6 +59,11 @@
         position: relative;
     }
 
+    .navbar-logo {
+        display: block;
+        font-size: 14px;
+    }
+
     .nav-menu {
         display: flex;
         flex-direction: column;
@@ -132,7 +137,4 @@
         transition: 250ms;
     }
 
-    Button {
-        display: none;
-    }
 }
