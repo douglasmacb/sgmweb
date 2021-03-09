@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 70%;
+    min-height: calc(100vh - 230px);
+}
+
+.container > div {
+    margin: 15px;
+}
+
+@media screen and (max-width: 960px) {
+    .container {
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,23 @@
+.search {
+    display: inline-block;
+    background-color: white;
+    padding: 25px;
+    width: 25rem;
+    height: 7.5rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.search input {
+    margin-right: 5px;
+}
+
+.search .input {
+    height: 1.7rem;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.search .title {
+    font-weight: bold;
+}

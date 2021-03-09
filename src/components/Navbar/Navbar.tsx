@@ -31,7 +31,7 @@ export const Navbar = () => {
                     )
                 })}
             </ul>
-            <Button>Sign Up</Button>
+            <Button>Entrar</Button>
         </nav>
     ) 
 }
