@@ -1,6 +1,6 @@
-import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import { Home, Layout, Login } from './components'
+import { Home, Layout } from './components'
+import { LoginPage } from './pages';
 import './App.css'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={LoginPage} />
           <Redirect to="/" />          
         </Switch>
       </Router>

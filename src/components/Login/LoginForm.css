@@ -1,0 +1,44 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252, 100%));
+  margin: 5rem auto auto auto;
+  padding: 5rem;
+  width: 50%;
+  min-width: 14rem;
+}
+
+.login-form input {
+  height: 50px;
+  margin: 10px;
+  width: 100%;
+  font-size: 20px;
+  text-align: center;
+  min-width: 12rem;
+  border: none;
+}
+
+.login-title {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  color: #fff;
+}
+
+.login-title h1 {
+  margin-left: 15px;
+  
+  justify-self: start;
+  cursor: pointer;
+}
+
+.fa-sign-in-alt {
+  font-size: 35px;
+}
+
+.login-errors {
+  margin-bottom: 1rem;
+  color: white;
+}
