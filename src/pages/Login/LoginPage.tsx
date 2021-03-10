@@ -8,8 +8,8 @@ import * as asyncactions from '../../store/user/async-actions';
 import './LoginPage.css'
 
 const mapStateToProps = ({ user }: IRootState) => {
-    const { email, password, loading } = user;
-    return { email, password, loading }
+    const { token, loading } = user;
+    return { token, loading }
 }
 
 const mapDispatcherToProps = (dispatch: Dispatch<UserActions>) => {
@@ -20,22 +20,22 @@ const mapDispatcherToProps = (dispatch: Dispatch<UserActions>) => {
   
 type ReduxType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatcherToProps>;
 
-interface IState {
+interface IUserState {
     email: string
     password: string
-    loading: boolean
 }
 
-class LoginPage extends React.Component<ReduxType, IState> {
+class LoginPage extends React.Component<ReduxType, IUserState> {
 
-    public state: IState = {
+    public state: IUserState = {
         email: '',
-        password: '',
-        loading: false
+        password: ''
       }
     
-    public authenticate = ({email, password}: IState) => {
-        this.props.authenticate(email, password)
+    public authenticate = async ({email, password}: IUserState) => {
+        await this.props.authenticate(email, password)
+        console.log('token', this.props.token)
+        console.log('loading', this.props.loading)
     }
 
     render() {
@@ -44,7 +44,7 @@ class LoginPage extends React.Component<ReduxType, IState> {
                 <Login 
                     email={this.state.email} 
                     password={this.state.password} 
-                    loading={this.state.loading}
+                    loading={this.props.loading}
                     authenticate={this.authenticate} />
             </div>
         )

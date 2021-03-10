@@ -16,7 +16,7 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
     const {
         values,
         errors,
-        isSubmitting,
+        loading,
         handleChange,
         handleSubmit,
     } = props;
@@ -45,7 +45,7 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
                 value={values.password}
             />
             <div className="login-errors">{errors.password}</div>
-            {isSubmitting ? <Spinner /> :
+            {loading ? <Spinner /> :
                 <Button 
                     buttonStyle="btn--primary" 
                     buttonSize="btn--large"
