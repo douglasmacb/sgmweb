@@ -9,6 +9,7 @@ interface FormValues {
 
 interface MyFormProps {
   email?: string
+  error?: string
   password?: string
   loading?: boolean
   authenticate?: any

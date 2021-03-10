@@ -5,6 +5,7 @@ import './LoginForm.css'
 
 export interface Props {
     loading?: boolean
+    error?: string
 }
 
 interface FormValues {
@@ -17,6 +18,7 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
         values,
         errors,
         loading,
+        error,
         handleChange,
         handleSubmit,
     } = props;
@@ -53,6 +55,8 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
                     Entrar
                 </Button>
             }
+            {error && <div className="api-errors">{error}</div>}
+            
         </form>
     )
 }

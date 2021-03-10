@@ -7,8 +7,21 @@ export function setLoading(loading: boolean) {
     });
 }
 
+export function setLoggedIn(loggedIn: boolean) {
+    return action(Constants.SET_LOGGEDIN, {
+        loggedIn
+    });
+}
+
 export function setToken(token: string) {
     return action(Constants.SET_TOKEN, {
         token
     });
 }
+
+export function setError(error: string) {
+    return action(Constants.SET_ERROR, {
+        error
+    });
+}
+

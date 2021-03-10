@@ -8,13 +8,13 @@ import * as asyncactions from '../../store/user/async-actions';
 import './LoginPage.css'
 
 const mapStateToProps = ({ user }: IRootState) => {
-    const { token, loading } = user;
-    return { token, loading }
+    const { token, error, loading } = user;
+    return { token, error, loading }
 }
 
 const mapDispatcherToProps = (dispatch: Dispatch<UserActions>) => {
     return {
-        authenticate: (email: string, password: string) => asyncactions.loginAsync(dispatch, email, password)
+        authenticate: (email: string, password: string): Promise<boolean> => asyncactions.loginAsync(dispatch, email, password)
     }
 }
   
@@ -33,9 +33,8 @@ class LoginPage extends React.Component<ReduxType, IUserState> {
       }
     
     public authenticate = async ({email, password}: IUserState) => {
-        await this.props.authenticate(email, password)
-        console.log('token', this.props.token)
-        console.log('loading', this.props.loading)
+        const isLoggedIn = await this.props.authenticate(email, password)
+        console.log('isLoggedIn', isLoggedIn)
     }
 
     render() {
@@ -45,6 +44,7 @@ class LoginPage extends React.Component<ReduxType, IUserState> {
                     email={this.state.email} 
                     password={this.state.password} 
                     loading={this.props.loading}
+                    error={this.props.error}
                     authenticate={this.authenticate} />
             </div>
         )

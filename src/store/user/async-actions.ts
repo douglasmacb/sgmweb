@@ -1,20 +1,27 @@
+import { AxiosResponse } from 'axios';
+import { ApiService } from './../../services/api-service';
 import { Dispatch } from 'redux';
 import * as actions from './actions';
 import { UserActions } from './types';
 
-function sleep(timeout: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(() => resolve(), timeout));
-}
-
-export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string, password: string) => {
+export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string, password: string): Promise<boolean> => {
 
     dispatch(actions.setLoading(true));
 
     try {
-        await sleep(1000);
-        dispatch(actions.setToken('any_token'));
+        const apiService = new ApiService()
+        const response: AxiosResponse<any> = await apiService.request().post('/core/auth', { email, senha: password })
+        const { token } = response.data
+        dispatch(actions.setToken(token));
         dispatch(actions.setLoading(false));
+        dispatch(actions.setLoggedIn(true));
+        dispatch(actions.setError(''));
+        
     } catch(error) {
+        dispatch(actions.setLoggedIn(false));
         dispatch(actions.setLoading(false));
+        dispatch(actions.setError(error.response?.data?.error));
+        return Promise.resolve(false)
     }
+    return Promise.resolve(true)
 }

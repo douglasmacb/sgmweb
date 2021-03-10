@@ -2,7 +2,9 @@ import { Constants, IUserState, UserActions } from './types';
 
 const init: IUserState = {
     token: '',
-    loading: false
+    error: '',
+    loggedIn: false,
+    loading: false,
 };
 
 export function userReducer(state: IUserState = init, action: UserActions): IUserState {
@@ -11,6 +13,10 @@ export function userReducer(state: IUserState = init, action: UserActions): IUse
             return { ...state, ...action.payload }
         case Constants.SET_LOADING: 
             return { ...state, ...action.payload }
+        case Constants.SET_LOGGEDIN: 
+            return { ...state, ...action.payload }
+        case Constants.SET_ERROR: 
+            return { ...state, error: action.payload.error }
         default:
             return state;
     }
