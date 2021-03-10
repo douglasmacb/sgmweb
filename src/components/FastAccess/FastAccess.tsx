@@ -1,17 +1,20 @@
 import './FastAccess.css'
 import { Search } from '../Search/Search'
+import history from '../../history'
 
+const SearchByCpfCnpj = (event: any) => {
+    history.push('/tax')
+}
 
-const handleCpfCnpj = (event: any) => {
-    console.log('eae', event)
+const searchProcess = (event: any) => {
 }
 
 export const FastAccess: React.FC = () => {
     return (
         <div className="fast-access">
             <div className="search-bar">
-                <Search title="Consultar CPF / CNPJ" formValues={handleCpfCnpj} maxLength={12} />
-                <Search title="Consultar Processos" mask="999999" formValues={handleCpfCnpj} />
+                <Search title="Consultar IPTU/ITR por CPF / CNPJ" formValues={SearchByCpfCnpj} maxLength={14} />
+                <Search title="Consultar Processos" mask="999999" formValues={searchProcess} />
             </div>
         </div>
     )

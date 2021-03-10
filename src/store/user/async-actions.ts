@@ -12,14 +12,13 @@ export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string,
         const apiService = new ApiService()
         const response: AxiosResponse<any> = await apiService.request().post('/core/auth', { email, senha: password })
         const { token } = response.data
-        dispatch(actions.setToken(token));
-        dispatch(actions.setLoading(false));
-        dispatch(actions.setLoggedIn(true));
-        dispatch(actions.setError(''));
-        
+        dispatch(actions.setToken(token))
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setLoggedIn(true))
+        dispatch(actions.setError(''))
     } catch(error) {
-        dispatch(actions.setLoggedIn(false));
-        dispatch(actions.setLoading(false));
+        dispatch(actions.setLoggedIn(false))
+        dispatch(actions.setLoading(false))
         dispatch(actions.setError(error.response?.data?.error));
         return Promise.resolve(false)
     }
