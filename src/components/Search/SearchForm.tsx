@@ -9,6 +9,7 @@ export interface Props {
     title?: string
     mask?: string,
     maxLength?: number
+    loading?: boolean
 }
 
 interface FormValues {
@@ -21,7 +22,7 @@ export const SearchForm = (props: Props & FormikProps<FormValues>) => {
         errors,
         handleChange,
         handleSubmit,
-        isSubmitting,
+        loading,
         mask, 
         title, 
         maxLength
@@ -43,7 +44,7 @@ export const SearchForm = (props: Props & FormikProps<FormValues>) => {
                     onChange={handleChange} 
                     className="input" 
                 />
-                {isSubmitting ? <Spinner /> :
+                {loading ? <Spinner /> :
                     <Button 
                         buttonStyle="btn--secondary" 
                         buttonSize="btn--small"

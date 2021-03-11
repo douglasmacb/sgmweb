@@ -13,6 +13,11 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
+.tax-table thead tr {
+    background-color: black;
+    color: #ffffff;
+}
+
 .tax-table td, th {
     border: 1px solid #999;
     padding: 0.5rem;
@@ -21,6 +26,7 @@
 .tax-table-name {
     font-weight: bold;
 }
+
 
 .tax-btn {
     margin: 25px;

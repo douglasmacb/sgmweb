@@ -30,11 +30,13 @@ class LoginPage extends React.Component<ReduxType, IUserState> {
     public state: IUserState = {
         email: '',
         password: ''
-      }
+    }
     
     public authenticate = async ({email, password}: IUserState) => {
         const isLoggedIn = await this.props.authenticate(email, password)
         console.log('isLoggedIn', isLoggedIn)
+        console.log(this.props.token);
+        
     }
 
     render() {
@@ -51,5 +53,5 @@ class LoginPage extends React.Component<ReduxType, IUserState> {
     }
 }
 
-export default connect(mapStateToProps, mapDispatcherToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatcherToProps)(LoginPage)
 

@@ -12,6 +12,7 @@ interface MyFormProps {
   mask?: string,
   formValues?: any
   maxLength?: number
+  loading?: boolean
 }
 
 export const Search = withFormik<MyFormProps, FormValues>({
