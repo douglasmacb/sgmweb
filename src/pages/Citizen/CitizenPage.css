@@ -1,0 +1,40 @@
+.citizen-services {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.citizen-services a {
+  text-decoration: none;
+}
+
+.citizen-service-item {
+  background-color: royalblue;
+  padding: 1.5rem;
+  width: 14rem;
+  margin: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.citizen-service-item:hover {
+  margin: 0.5rem;
+  transition: all 0.5s ease;
+}
+
+.citizen-service-item p {
+  text-align: center;
+  margin-top: 0.7rem;
+  color: white;
+  text-decoration: none;
+}
+
+.citizen-service-item .fas {
+  font-size: 5rem;
+  color: orange;
+}
