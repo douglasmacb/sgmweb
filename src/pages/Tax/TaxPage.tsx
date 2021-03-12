@@ -83,8 +83,12 @@ class TaxPage extends React.Component<ReduxType & Props> {
                                 <td className="tax-table-value">{taxData[0]?.exercicio}</td>
                             </tr>
                             <tr>
+                                <td className="tax-table-name">Tipo do Imposto</td>
+                                <td className="tax-table-value">{taxData[0]?.tipoImposto}</td>
+                            </tr>
+                            <tr>
                                 <td className="tax-table-name">Valor do Imposto</td>
-                                <td className="tax-table-value">{formatNumberToMoney(taxData[0]?.impostoTerritorial)}</td>
+                                <td className="tax-table-value">{formatNumberToMoney(taxData[0]?.impostoDevido)}</td>
                             </tr>
                         </tbody>
                     </table>
