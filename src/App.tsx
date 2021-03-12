@@ -1,6 +1,6 @@
 import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from './components'
-import { HomePage } from './pages';
+import { HomePage, CitizenPage } from './pages';
 import LoginPage from './pages/Login/LoginPage'
 import TaxPage from './pages/Tax/TaxPage'
 import history from './history'
@@ -15,6 +15,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/tax" component={TaxPage} />
+          <Route exact path="/citizen" component={CitizenPage} />
           <Redirect to="/" />          
         </Switch>
       </Router>

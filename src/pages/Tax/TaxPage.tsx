@@ -47,10 +47,18 @@ class TaxPage extends React.Component<ReduxType & Props> {
                                 <td className="tax-table-name">Nome</td>
                                 <td className="tax-table-value">{taxData[0]?.contribuinte?.nome}</td>
                             </tr>
-                            <tr>
-                                <td className="tax-table-name">CPF</td>
-                                <td className="tax-table-value">{taxData[0]?.contribuinte?.cpf}</td>
-                            </tr>
+                            {taxData[0]?.contribuinte?.cpf &&
+                                <tr>
+                                    <td className="tax-table-name">CPF</td>
+                                    <td className="tax-table-value">{taxData[0]?.contribuinte?.cpf}</td>
+                                </tr>
+                            }
+                            {taxData[0]?.contribuinte?.cnpj &&
+                                <tr>
+                                    <td className="tax-table-name">CNPJ</td>
+                                    <td className="tax-table-value">{taxData[0]?.contribuinte?.cnpj}</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                     <br />

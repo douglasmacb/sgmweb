@@ -32,3 +32,18 @@ export const searchIPTUByCnpjAsync = async (dispatch: Dispatch<TaxActions>, cnpj
         dispatch(actions.setError(error.response?.data?.error))
     }
 }
+
+export const searchITRByCnpjAsync = async (dispatch: Dispatch<TaxActions>, cnpj: string): Promise<void> => {
+
+    dispatch(actions.setLoading(true));
+
+    try {
+        const { data } = await new ApiService().get(`/stur/itr/cnpj/${cnpj}`)
+        dispatch(actions.setTax(data))
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(''))
+    } catch(error) {
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(error.response?.data?.error))
+    }
+}

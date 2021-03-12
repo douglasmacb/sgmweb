@@ -1,0 +1,15 @@
+.logo {
+  display: flex;
+}
+
+.logo-image {
+  width: 4rem;
+  height: 4rem;
+}
+
+.logo-text {
+  color: #fff;
+  justify-self: start;
+  margin-left: 20px;
+  cursor: pointer;
+}

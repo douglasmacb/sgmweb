@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { MenuItems } from './MenuItems'
 import { Button } from '../Button'
+import { Logo } from '../../components'
 import './Navbar.css'
 
 interface MenuItem {
@@ -18,10 +19,7 @@ export const Navbar: React.FC = () => {
 
     return (
         <nav className="NavbarItems">
-            <div className="navbar-logo">
-                <h1>Prefeitura</h1>
-                <h1>Bom Destino</h1>
-            </div>
+            <Logo />
             <div className="menu-icon" onClick={handleClick}>
                 <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             </div>

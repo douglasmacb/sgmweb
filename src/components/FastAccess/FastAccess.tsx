@@ -16,7 +16,8 @@ const mapStateToProps = ({ tax }: IRootState) => {
 const mapDispatcherToProps = (dispatch: Dispatch<TaxActions>) => {
     return {
         searchIPTUByCpf: (cpf: string): Promise<void> => asyncactions.searchIPTUByCpfAsync(dispatch, cpf),
-        searchIPTUByCnpj: (cnpj: string): Promise<void> => asyncactions.searchIPTUByCnpjAsync(dispatch, cnpj)
+        searchIPTUByCnpj: (cnpj: string): Promise<void> => asyncactions.searchIPTUByCnpjAsync(dispatch, cnpj),
+        searchITRByCnpj: (cpf: string): Promise<void> => asyncactions.searchITRByCnpjAsync(dispatch, cpf),
     }
 }
 
@@ -41,26 +42,45 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
          }, 3000);
     }
 
-    searchByCpfCnpj = async (cpfCnpj: string) => {
-         await this.props.searchIPTUByCpf(cpfCnpj)
-         console.log(this.props.tax.taxData[0])
-         if(this.props.tax.taxData.length > 0) {
+    redirectToTaxPageOrSendErrorMessage = () => {
+        if(this.props.tax.taxData.length > 0) {
             history.push('/tax')
         } else {
             this.handleMessage('Dados inválidos!')
         }
     }
-    
+
+    searchIPTUByCpfCnpj = async (cpfCnpj: string) => {
+        if(cpfCnpj.length === 14) {
+            await this.props.searchIPTUByCnpj(cpfCnpj)
+        } else {
+            await this.props.searchIPTUByCpf(cpfCnpj)
+        }
+        this.redirectToTaxPageOrSendErrorMessage()
+    }
+
+    searchITRByCnpj = async (cnpj: string) => {
+        await this.props.searchITRByCnpj(cnpj)
+        this.redirectToTaxPageOrSendErrorMessage()
+    }
+
     searchProcessByNumber = (number: number) => {
     }
 
     render() {
         return (
             <div className="fast-access">
+                <h3><i className="fas fa-running"></i> Acesso Rápido</h3>
                 <div className="search-bar">
                     <Search 
-                        title="Consultar Imposto Territorial por CPF / CNPJ" 
-                        formValues={this.searchByCpfCnpj} 
+                        title="Consultar IPTU por CPF / CNPJ" 
+                        formValues={this.searchIPTUByCpfCnpj} 
+                        maxLength={11} 
+                        loading={this.props.tax.loading}
+                    />
+                    <Search 
+                        title="Consultar ITR por CNPJ" 
+                        formValues={this.searchITRByCnpj} 
                         maxLength={14} 
                         loading={this.props.tax.loading}
                     />

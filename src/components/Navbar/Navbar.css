@@ -7,13 +7,6 @@
     font-size: 1.2rem;
 }
 
-.navbar-logo {
-    color: #fff;
-    justify-self: start;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
 .fa-react {
     margin-left: 0.5rem;
     font-size: 1.6rem;
@@ -59,11 +52,6 @@
         position: relative;
     }
 
-    .navbar-logo {
-        display: block;
-        font-size: 14px;
-    }
-
     .nav-menu {
         display: flex;
         flex-direction: column;
@@ -94,13 +82,6 @@
     .nav-links:hover {
         background-color: #7577fa;
         border-radius: 0;
-    }
-
-    .navbar-logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(25%, 50%);
     }
 
     .menu-icon {

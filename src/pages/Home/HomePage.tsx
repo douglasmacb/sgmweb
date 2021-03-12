@@ -1,6 +1,5 @@
 import { Banner } from '../../components'
 import FastAccess from '../../components/FastAccess/FastAccess'
-import './HomePage.css'
 
 export const HomePage: React.FC = () => {
     return (
