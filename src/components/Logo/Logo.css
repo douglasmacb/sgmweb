@@ -3,8 +3,10 @@
 }
 
 .logo-image {
-  width: 4rem;
   height: 4rem;
+  cursor: pointer;
+  justify-self: start;
+  margin-left: 20px;
 }
 
 .logo h1 {
