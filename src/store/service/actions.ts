@@ -19,3 +19,9 @@ export function setError(error: string) {
     });
 }
 
+export function setProtocol(protocol: number) {
+    return action(Constants.SET_PROTOCOL, {
+        protocol
+    });
+}
+
