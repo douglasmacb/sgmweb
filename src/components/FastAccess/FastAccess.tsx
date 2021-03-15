@@ -6,18 +6,21 @@ import { IRootState } from '../../store'
 import { TaxActions } from '../../store/tax/types'
 import { Dispatch } from 'redux'
 import * as asyncactions from '../../store/tax/async-actions'
+import * as asyncserviceactions from '../../store/service/async-actions'
 import React from 'react'
 import { Snackbar } from '../../components'
+import { ServiceActions } from '../../store/service/types'
 
-const mapStateToProps = ({ tax }: IRootState) => {
-    return { tax }
+const mapStateToProps = ({ tax, service }: IRootState) => {
+    return { tax, service }
 }
 
-const mapDispatcherToProps = (dispatch: Dispatch<TaxActions>) => {
+const mapDispatcherToProps = (dispatch: Dispatch<TaxActions | ServiceActions>) => {
     return {
         searchIPTUByCpf: (cpf: string): Promise<void> => asyncactions.searchIPTUByCpfAsync(dispatch, cpf),
         searchIPTUByCnpj: (cnpj: string): Promise<void> => asyncactions.searchIPTUByCnpjAsync(dispatch, cnpj),
         searchITRByCnpj: (cpf: string): Promise<void> => asyncactions.searchITRByCnpjAsync(dispatch, cpf),
+        searchServiceOrderByProtocol: (protocol: number): Promise<void> => asyncserviceactions.searchServiceOrderByProtocol(dispatch, protocol),
     }
 }
 
@@ -64,7 +67,14 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
         this.redirectToTaxPageOrSendErrorMessage()
     }
 
-    searchProcessByNumber = (number: number) => {
+    searchProtocol = async (protocol: number) => {
+        await this.props.searchServiceOrderByProtocol(protocol)
+        const order = this.props.service.serviceOrderData
+        if(order) {
+            history.push('/protocol')
+        } else {
+            this.handleMessage('Dados inválidos!')
+        }
     }
 
     render() {
@@ -84,7 +94,7 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
                         maxLength={14} 
                         loading={this.props.tax.loading}
                     />
-                    <Search title="Consultar Processo" mask="99999999" formValues={this.searchProcessByNumber} />
+                    <Search title="Consultar Protocolo" mask="99999999" formValues={this.searchProtocol} />
                 </div>
                 <Snackbar show={this.state.show} message={this.state.message} />
             </div>

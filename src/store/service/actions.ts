@@ -13,6 +13,12 @@ export function setService(serviceData: object[]) {
     });
 }
 
+export function setServiceOrder(serviceOrderData: any) {
+    return action(Constants.SET_SERVICE_ORDER, {
+        serviceOrderData
+    });
+}
+
 export function setError(error: string) {
     return action(Constants.SET_ERROR, {
         error

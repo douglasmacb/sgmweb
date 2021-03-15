@@ -8,6 +8,7 @@ export interface IServiceState {
   error: string
   protocol: number
   serviceData: any[]
+  serviceOrderData: any
 }
 
 export interface IServiceOrderState {
@@ -24,6 +25,7 @@ export interface IServiceOrderState {
 
 export enum Constants {
   SET_SERVICE = 'SET_SERVICE',
+  SET_SERVICE_ORDER = 'SET_SERVICE_ORDER',
   SET_LOADING = 'SET_LOADING',
   SET_ERROR = 'SET_ERROR',
   SET_PROTOCOL = 'SET_PROTOCOL'

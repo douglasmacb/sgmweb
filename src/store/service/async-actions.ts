@@ -34,3 +34,19 @@ export const createServiceOrder = async (dispatch: Dispatch<ServiceActions>, ser
         return Promise.resolve(false)
     }
 }
+
+export const searchServiceOrderByProtocol = async (dispatch: Dispatch<ServiceActions>, protocol: number): Promise<void> => {
+
+    dispatch(actions.setLoading(true));
+
+    try {
+        const { data } = await new ApiService().get(`/servico/protocolo/${protocol}`)
+        dispatch(actions.setServiceOrder(data))
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(''))
+    } catch(error) {
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(error.response?.data?.error))
+    }
+}
+
