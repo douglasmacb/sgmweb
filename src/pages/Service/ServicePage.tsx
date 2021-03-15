@@ -18,37 +18,9 @@ const mapDispatcherToProps = (dispatch: Dispatch<ServiceActions>) => {
     }
 }
 
-interface IServiceFormState {
-    nome: string
-    email: string
-    telefone: string
-    cpf: string
-    servicoId: number
-    logradouro: string
-    numero: string
-    cep: string
-    estado: string
-    cidade: string
-    descricao: string
-}
-
 type ReduxType = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatcherToProps>;
 
-class ServicePage extends React.Component<ReduxType, IServiceFormState> {
-
-    public state: IServiceFormState = {
-        nome: '',
-        email: '',
-        telefone: '',
-        cpf: '',
-        servicoId: 0,
-        logradouro: '',
-        cep: '',
-        estado: '',
-        cidade: '',
-        descricao: '',
-        numero: ''
-    }
+class ServicePage extends React.Component<ReduxType> {
 
     constructor(props: ReduxType) {
         super(props)
@@ -64,19 +36,7 @@ class ServicePage extends React.Component<ReduxType, IServiceFormState> {
             <>
                 <div>
                     <h2 className="page-title">Solicitar Serviço</h2>
-                    <Service 
-                        nome={this.state.nome}
-                        email={this.state.email}
-                        telefone={this.state.telefone}
-                        cpf={this.state.cpf}
-                        servicoId={this.state.servicoId}
-                        logradouro={this.state.logradouro}
-                        numero={this.state.numero}
-                        cep={this.state.cep}
-                        cidade={this.state.cidade}
-                        estado={this.state.estado}
-                        descricao={this.state.descricao}
-                        handleSubmit={this.handleSubmit} />
+                    <Service handleSubmit={this.handleSubmit} />
                 </div>
             </>
         )

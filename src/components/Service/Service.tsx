@@ -2,6 +2,21 @@ import { withFormik } from 'formik'
 import * as Yup from 'yup'
 import { ServiceForm } from './ServiceForm'
 
+interface MyFormProps {
+  nome?: string
+  email?: string
+  telefone?: string
+  cpf?: string
+  servicoId?: number
+  logradouro?: string
+  numero?: string
+  cep?: string
+  estado?: string
+  descricao?: string
+  cidade?: string
+  handleSubmit: any
+}
+
 export interface FormValues {
   nome: string
   email: string
@@ -14,11 +29,22 @@ export interface FormValues {
   estado: string
   descricao: string
   cidade: string
-  handleSubmit?: any
 }
 
-export const Service = withFormik<FormValues, FormValues>({
-  mapPropsToValues: props => ({ ...props }),
+export const Service = withFormik<MyFormProps, FormValues>({
+  mapPropsToValues: props => ({
+    cep: props.cep || '',
+    email: props.email || '',
+    telefone: props.telefone || '',
+    nome: props.nome || '',
+    cpf: props.cpf || '',
+    servicoId: props.servicoId || 0,
+    logradouro: props.logradouro || '',
+    numero: props.numero || '',
+    estado: props.estado || '',
+    descricao: props.descricao || '',
+    cidade: props.cidade || '',
+  }),
 
   validationSchema: Yup.object().shape({
     email: Yup.string().email('Formato invalido de e-mail').required("Preencha o email"),
