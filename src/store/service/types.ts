@@ -6,6 +6,7 @@ export type ServiceActions = ActionType<typeof actions>;
 export interface IServiceState {
   loading: boolean
   error: string
+  protocol: number
   serviceData: any[]
 }
 

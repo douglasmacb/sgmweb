@@ -22,7 +22,6 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
     const {
         values,
         errors,
-        loading,
         error,
         handleChange,
         handleSubmit,
@@ -41,7 +40,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                         <div className="service-title">
                             <h3>Solicitação</h3>
                         </div>
-                        <select name="servicoId" value={values.servicoId} onChange={handleChange}  id="servicoId">
+                        <select name="servicoId" id="servicoId" value={values.servicoId} onChange={handleChange}>
                             {serviceState.serviceData.map((service: IService) => {
                                 return (
                                     <option key={service.id} value={service.id}>{service.nome}</option>
@@ -105,47 +104,47 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             <h3>Dados do Solicitante</h3>
                         </div>
                         <input
-                            id="nome"
-                            name="nome"
+                            id="nomeSolicitante"
+                            name="nomeSolicitante"
                             placeholder="Nome do Solicitante"
                             type="text"
                             onChange={handleChange}
-                            value={values.nome}
+                            value={values.nomeSolicitante}
                         />
-                        <div className="service-errors">{errors.nome}</div>
+                        <div className="service-errors">{errors.nomeSolicitante}</div>
                         <input
-                            id="email"
-                            name="email"
+                            id="emailSolicitante"
+                            name="emailSolicitante"
                             placeholder="Email"
                             type="text"
                             onChange={handleChange}
-                            value={values.email}
+                            value={values.emailSolicitante}
                         />
-                        <div className="service-errors">{errors.email}</div>
+                        <div className="service-errors">{errors.emailSolicitante}</div>
                         <InputMask
-                            id="telefone"
-                            name="telefone"
+                            id="telefoneSolicitante"
+                            name="telefoneSolicitante"
                             mask="(99) 99999-9999"
                             placeholder="Telefone"
                             type="text"
                             onChange={handleChange}
-                            value={values.telefone}
+                            value={values.telefoneSolicitante}
                         />
-                        <div className="service-errors">{errors.telefone}</div>
+                        <div className="service-errors">{errors.telefoneSolicitante}</div>
                         <InputMask
-                            id="cpf"
-                            name="cpf"
+                            id="cpfSolicitante"
+                            name="cpfSolicitante"
                             mask="999.999.999-99"
                             placeholder="CPF"
                             type="text"
                             onChange={handleChange}
-                            value={values.cpf}
+                            value={values.cpfSolicitante}
                         />
-                        <div className="service-errors">{errors.cpf}</div>
+                        <div className="service-errors">{errors.cpfSolicitante}</div>
                     </div>
                     
                 </div>
-                {loading ? <Spinner /> :
+                {serviceState.loading ? <Spinner /> :
                     <Button 
                         buttonStyle="btn--primary" 
                         buttonSize="btn--small"

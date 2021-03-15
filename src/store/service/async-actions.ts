@@ -18,17 +18,19 @@ export const fetchServices = async (dispatch: Dispatch<ServiceActions>): Promise
     }
 }
 
-export const createServiceOrder = async (dispatch: Dispatch<ServiceActions>, serviceOrder: IServiceOrderState): Promise<void> => {
+export const createServiceOrder = async (dispatch: Dispatch<ServiceActions>, serviceOrder: IServiceOrderState): Promise<boolean> => {
 
     dispatch(actions.setLoading(true));
 
     try {
         const { data } = await new ApiService().post(`/servico/solicitacao`, serviceOrder)
-        dispatch(actions.setService(data))
+        dispatch(actions.setProtocol(data.protocolo))
         dispatch(actions.setLoading(false))
         dispatch(actions.setError(''))
+        return Promise.resolve(true)
     } catch(error) {
         dispatch(actions.setLoading(false))
         dispatch(actions.setError(error.response?.data?.error))
+        return Promise.resolve(false)
     }
 }

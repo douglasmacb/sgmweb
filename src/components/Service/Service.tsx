@@ -3,10 +3,10 @@ import * as Yup from 'yup'
 import { ServiceForm } from './ServiceForm'
 
 interface MyFormProps {
-  nome?: string
-  email?: string
-  telefone?: string
-  cpf?: string
+  nomeSolicitante?: string
+  emailSolicitante?: string
+  telefoneSolicitante?: string
+  cpfSolicitante?: string
   servicoId?: number
   logradouro?: string
   numero?: string
@@ -18,27 +18,27 @@ interface MyFormProps {
 }
 
 export interface FormValues {
-  nome: string
-  email: string
-  telefone: string
-  cpf: string
-  servicoId: number
-  logradouro: string
-  numero: string
-  cep: string
-  estado: string
-  descricao: string
-  cidade: string
+  nomeSolicitante?: string
+  emailSolicitante?: string
+  telefoneSolicitante?: string
+  cpfSolicitante?: string
+  servicoId?: number
+  logradouro?: string
+  numero?: string
+  cep?: string
+  estado?: string
+  descricao?: string
+  cidade?: string
 }
 
 export const Service = withFormik<MyFormProps, FormValues>({
   mapPropsToValues: props => ({
     cep: props.cep || '',
-    email: props.email || '',
-    telefone: props.telefone || '',
-    nome: props.nome || '',
-    cpf: props.cpf || '',
-    servicoId: props.servicoId || 0,
+    emailSolicitante: props.emailSolicitante || '',
+    telefoneSolicitante: props.telefoneSolicitante || '',
+    nomeSolicitante: props.nomeSolicitante || '',
+    cpfSolicitante: props.cpfSolicitante || '',
+    servicoId: props.servicoId || 1,
     logradouro: props.logradouro || '',
     numero: props.numero || '',
     estado: props.estado || '',
@@ -47,13 +47,13 @@ export const Service = withFormik<MyFormProps, FormValues>({
   }),
 
   validationSchema: Yup.object().shape({
-    email: Yup.string().email('Formato invalido de e-mail').required("Preencha o email"),
-    nome: Yup.string().required("Preencha o nome"),
-    telefone: Yup.string().required("Preencha o telefone"),
+    emailSolicitante: Yup.string().email('Formato invalido de e-mail').required("Preencha o email"),
+    nomeSolicitante: Yup.string().required("Preencha o nome"),
+    telefoneSolicitante: Yup.string().required("Preencha o telefone"),
     logradouro: Yup.string().required("Preencha o logradouro"),
     numero: Yup.number().required("Preencha o número"),
     cep: Yup.string().required("Preencha o cep"),
-    cpf: Yup.string().required("Preencha o cpf"),
+    cpfSolicitante: Yup.string().required("Preencha o cpf"),
     estado: Yup.string().required("Preencha o estado"),
     cidade: Yup.string().required("Preencha a cidade"),
     descricao: Yup.string().required("Preencha a descricao")

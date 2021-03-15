@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Service } from '../../components/Service/Service';
 import { IRootState } from '../../store';
+import history from '../../history'
 import * as asyncactions from '../../store/service/async-actions';
-import { ServiceActions } from '../../store/service/types';
+import { ServiceActions, IServiceOrderState } from '../../store/service/types';
 import './ServicePage.css'
 
 const mapStateToProps = ({ service }: IRootState) => {
@@ -14,7 +15,8 @@ const mapStateToProps = ({ service }: IRootState) => {
 
 const mapDispatcherToProps = (dispatch: Dispatch<ServiceActions>) => {
     return {
-        fetchServices: (): Promise<void> => asyncactions.fetchServices(dispatch)
+        fetchServices: (): Promise<void> => asyncactions.fetchServices(dispatch),
+        createServiceOrder: (serviceOrder: IServiceOrderState): Promise<boolean> => asyncactions.createServiceOrder(dispatch, serviceOrder)
     }
 }
 
@@ -27,8 +29,12 @@ class ServicePage extends React.Component<ReduxType> {
         props.fetchServices()
     }
 
-    handleSubmit = (value: any) => {
-        console.log(value)
+    handleSubmit = (serviceOrder: IServiceOrderState) => {
+        console.log(serviceOrder)
+        const isCreated = this.props.createServiceOrder(serviceOrder)
+        if(isCreated) {
+            history.push('/service/created')
+        }
     }
 
     render() {

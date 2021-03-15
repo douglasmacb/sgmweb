@@ -4,6 +4,7 @@ import {
   HomePage, 
   CitizenPage,
   ContactPage,
+  ServiceCreatedPage
 } from './pages';
 import LoginPage from './pages/Login/LoginPage'
 import ServicePage from './pages/Service/ServicePage';
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/tax" component={TaxPage} />
           <Route exact path="/citizen" component={CitizenPage} />
           <Route exact path="/service" component={ServicePage} />
+          <Route exact path="/service/created" component={ServiceCreatedPage} />
           <Route exact path="/contact" component={ContactPage} />
           <Redirect to="/" />          
         </Switch>

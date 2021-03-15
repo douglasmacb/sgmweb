@@ -84,7 +84,7 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
                         maxLength={14} 
                         loading={this.props.tax.loading}
                     />
-                    <Search title="Consultar Processos" mask="999999" formValues={this.searchProcessByNumber} />
+                    <Search title="Consultar Processo" mask="99999999" formValues={this.searchProcessByNumber} />
                 </div>
                 <Snackbar show={this.state.show} message={this.state.message} />
             </div>
