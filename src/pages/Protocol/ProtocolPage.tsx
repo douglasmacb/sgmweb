@@ -9,7 +9,7 @@ export const ProtocolPage: React.FC = () => {
     return (
         <>
             <div>
-                <h2 className='page-title'>Consultar Protocolo</h2>
+                <h2 className='page-title'>Protocolo {serviceOrderData?.protocolo}</h2>
                 <div className="tax-container">
                     <table className="tax-table">
                         <thead>
