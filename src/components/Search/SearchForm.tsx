@@ -23,39 +23,35 @@ export const SearchForm = (props: Props & FormikProps<FormValues>) => {
         handleChange,
         handleSubmit,
         loading,
-        mask, 
-        title, 
+        mask,
+        title,
         maxLength
     } = props;
- 
+
     const maskInput = mask ? mask : ""
 
     return (
         <form className="search-form" onSubmit={handleSubmit}>
             <label className="title">{title}</label>
-
-            <div className="field-area">
-                <InputMask 
-                    mask={maskInput} 
-                    value={values.value} 
-                    id="value"
-                    name="value"
-                    maxLength={maxLength}
-                    onChange={handleChange} 
-                    className="input" 
-                />
-                {loading ? <Spinner /> :
-                    <Button 
-                        buttonStyle="btn--secondary" 
-                        buttonSize="btn--small"
-                        type="submit">
-                        Consultar
-                    </Button>
-                }
-            </div>
+            <InputMask
+                mask={maskInput}
+                value={values.value}
+                id="value"
+                name="value"
+                maxLength={maxLength}
+                onChange={handleChange}
+                className={`input-container input`}
+            />
             <div className="errors">
                 {errors.value}
             </div>
+            {loading
+                ? <Spinner />
+                : <Button
+                    type="submit">
+                    Consultar
+                    </Button>
+            }
         </form>
     )
 }

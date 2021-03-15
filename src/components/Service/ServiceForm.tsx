@@ -27,12 +27,12 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
         handleChange,
         handleSubmit,
     } = props;
-    
+
 
     const serviceStateSelector = (state: IRootState) => state.service
 
     const serviceState: IServiceState = useSelector(serviceStateSelector)
- 
+
     return (
         <div className="service-container">
             <form onSubmit={handleSubmit}>
@@ -41,7 +41,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                         <div className="service-title">
                             <h3>Solicitação</h3>
                         </div>
-                        <select name="servicoId" value={values.servicoId} onChange={handleChange}  id="servicoId">
+                        <select name="servicoId" value={values.servicoId} className={`input-container`} onChange={handleChange} id="servicoId">
                             {serviceState.serviceData.map((service: IService) => {
                                 return (
                                     <option key={service.id} value={service.id}>{service.nome}</option>
@@ -54,6 +54,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="logradouro"
                             placeholder="Logradouro"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.logradouro}
                         />
@@ -63,6 +64,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="numero"
                             placeholder="Número"
                             type="number"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.numero}
                         />
@@ -73,6 +75,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             placeholder="CEP"
                             mask="99999-999"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.cep}
                         />
@@ -82,6 +85,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="cidade"
                             placeholder="Cidade"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.cidade}
                         />
@@ -91,13 +95,14 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="estado"
                             placeholder="Estado"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.estado}
                         />
                         <div className="service-errors">{errors.estado}</div>
 
                         <label htmlFor="descricao">Descrição da Solicitação: </label>
-                        <textarea id="descricao" value={values.descricao} onChange={handleChange} />
+                        <textarea id="descricao" value={values.descricao} onChange={handleChange} className={`input-container`} />
                         <div className="service-errors">{errors.descricao}</div>
                     </div>
                     <div className="service-item">
@@ -109,6 +114,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="nome"
                             placeholder="Nome do Solicitante"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.nome}
                         />
@@ -118,6 +124,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="email"
                             placeholder="Email"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.email}
                         />
@@ -128,6 +135,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             mask="(99) 99999-9999"
                             placeholder="Telefone"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.telefone}
                         />
@@ -138,23 +146,23 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             mask="999.999.999-99"
                             placeholder="CPF"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.cpf}
                         />
                         <div className="service-errors">{errors.cpf}</div>
                     </div>
-                    
+
                 </div>
-                {loading ? <Spinner /> :
-                    <Button 
-                        buttonStyle="btn--primary" 
-                        buttonSize="btn--small"
-                        type="submit">
-                        Solicitar
+                <div className="service-actions">
+                    {loading ? <Spinner /> :
+                        <Button
+                            type="submit">
+                            Solicitar
                     </Button>
-                }
-                {error && <div className="api-errors">{error}</div>}
-                
+                    }
+                    {error && <div className="api-errors">{error}</div>}
+                </div>
             </form>
         </div>
     )
