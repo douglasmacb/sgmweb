@@ -3,6 +3,8 @@ import { MenuItems } from './MenuItems'
 import { Button } from '../Button'
 import { Logo } from '../../components'
 import './Navbar.css'
+import { IRootState } from '../../store'
+import { useSelector } from 'react-redux'
 
 interface MenuItem {
     title: string
@@ -16,6 +18,9 @@ export const Navbar: React.FC = () => {
     const handleClick = () => {
         setClicked(!clicked)
     }
+
+    const userSelector = (state: IRootState) => state.user
+    const { loggedIn } = useSelector(userSelector)
 
     return (
         <nav className="NavbarItems">
@@ -32,7 +37,11 @@ export const Navbar: React.FC = () => {
                     )
                 })}
             </ul>
-            <a href="/login"><Button cName="btn-entrar">Entrar</Button></a>
+            {!loggedIn ? 
+                <a href="/login"><Button cName="btn-entrar">Entrar</Button></a> :
+                <a href="/logout"><Button cName="btn-entrar">Sair</Button></a>
+            }
+            
         </nav>
     ) 
 }

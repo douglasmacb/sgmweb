@@ -11,6 +11,7 @@ export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string,
         const apiService = new ApiService()
         const response: ApiResponse = await apiService.post('/core/auth', { email, senha: password })
         const { token } = response.data
+        localStorage.setItem('token', token)
         dispatch(actions.setToken(token))
         dispatch(actions.setLoading(false))
         dispatch(actions.setLoggedIn(true))
@@ -22,4 +23,13 @@ export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string,
         return Promise.resolve(false)
     }
     return Promise.resolve(true)
+}
+
+
+export const logoutAsync = async (dispatch: Dispatch<UserActions>): Promise<void> => {
+    new ApiService().logout()
+    dispatch(actions.setToken(''))
+    dispatch(actions.setLoading(false))
+    dispatch(actions.setLoggedIn(false))
+    dispatch(actions.setError(''))
 }

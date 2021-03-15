@@ -6,6 +6,7 @@ import { UserActions } from '../../store/user/types';
 import { IRootState } from '../../store'
 import * as asyncactions from '../../store/user/async-actions';
 import './LoginPage.css'
+import history from '../../history';
 
 const mapStateToProps = ({ user }: IRootState) => {
     const { token, error, loading } = user;
@@ -33,10 +34,8 @@ class LoginPage extends React.Component<ReduxType, IUserState> {
     }
     
     public authenticate = async ({email, password}: IUserState) => {
-        const isLoggedIn = await this.props.authenticate(email, password)
-        console.log('isLoggedIn', isLoggedIn)
-        console.log(this.props.token);
-        
+       await this.props.authenticate(email, password)
+       history.push('/dashboard')
     }
 
     render() {

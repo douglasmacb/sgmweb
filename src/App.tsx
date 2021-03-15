@@ -1,20 +1,27 @@
 import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from './components'
+import Authentication from './components/Auth/Authentication';
+import Authorization from './components/Auth/Authorization';
+import LoginPage from './pages/Login/LoginPage'
+import ServicePage from './pages/Service/ServicePage';
+import Logout from './components/Logout/Logout';
+import TaxPage from './pages/Tax/TaxPage'
+import history from './history'
 import { 
   HomePage, 
   CitizenPage,
   ContactPage,
   ServiceCreatedPage,
-  ProtocolPage
+  ProtocolPage,
+  DashboardPage
 } from './pages';
-import LoginPage from './pages/Login/LoginPage'
-import ServicePage from './pages/Service/ServicePage';
-import TaxPage from './pages/Tax/TaxPage'
-import history from './history'
-
 import './App.css'
 
 function App() {
+
+  const AdminRole = Authorization(['Admin']);
+  const dashboardPage = Authentication(AdminRole(DashboardPage))
+
   return (
     <Layout>
       <Router history={history}>
@@ -27,6 +34,8 @@ function App() {
           <Route exact path="/service/created" component={ServiceCreatedPage} />
           <Route exact path="/protocol" component={ProtocolPage} />
           <Route exact path="/contact" component={ContactPage} />
+          <Route exact path="/dashboard" component={dashboardPage} />
+          <Route exact path="/logout" component={Logout} />
           <Redirect to="/" />          
         </Switch>
       </Router>

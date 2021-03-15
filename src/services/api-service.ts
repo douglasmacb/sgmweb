@@ -1,4 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
+import jwtdecode from 'jwt-decode'
+
 
 export interface ApiResponse {
   data: any
@@ -41,8 +43,16 @@ export class ApiService {
     return this.fetchPublicApi.delete(path)
   }
 
-  private getToken = (): string | null => {
+  getToken = (): string | null => {
     return localStorage.getItem('token')
+  }
+
+  decode = (token: string): any => {
+    return jwtdecode(token)
+  }
+
+  logout = (): void => {
+    localStorage.removeItem("token")
   }
 }
 
