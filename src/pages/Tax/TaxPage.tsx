@@ -20,10 +20,8 @@ type ReduxType = ReturnType<typeof mapStateToProps>;
 class TaxPage extends React.Component<ReduxType & Props> {
 
     goBack = (): void => {        
-        console.log(this.props.taxData)
         this.props.history.goBack()
     }
-
 
     render() {
         const {

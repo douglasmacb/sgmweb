@@ -10,15 +10,19 @@ export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string,
     try {
         const apiService = new ApiService()
         const response: ApiResponse = await apiService.post('/core/auth', { email, senha: password })
-        const { token } = response.data
+        const { token, roles } = response.data
         localStorage.setItem('token', token)
         dispatch(actions.setToken(token))
+        dispatch(actions.setRoles(roles))
+        dispatch(actions.setEmail(email))
         dispatch(actions.setLoading(false))
         dispatch(actions.setLoggedIn(true))
         dispatch(actions.setError(''))
     } catch(error) {
         dispatch(actions.setLoggedIn(false))
         dispatch(actions.setLoading(false))
+        dispatch(actions.setRoles([]))
+        dispatch(actions.setToken(''))
         dispatch(actions.setError(error.response?.data?.error))
         return Promise.resolve(false)
     }

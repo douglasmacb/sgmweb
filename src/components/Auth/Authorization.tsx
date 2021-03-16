@@ -1,15 +1,17 @@
 import { ComponentType } from 'react';
-import { ApiService } from '../../services/api-service';
+import { useSelector } from 'react-redux';
+import { IRootState } from '../../store';
 
 export default function Authorization(allowedRoles: string[]) {
+
+  const userSelector = (state: IRootState) => state.user
+  const { roles } = useSelector(userSelector)
+
   return function(WrappedComponent: ComponentType) {
     return function(props: any) {
 
-      const apiService = new ApiService()
-      const token = apiService.getToken()
-      if(token) {
-        const payload = apiService.decode(token)
-        if (validateRoles(payload?.roles, allowedRoles)) {
+      if(roles && roles.length > 0) {
+        if (validateRoles(roles, allowedRoles)) {
             return <WrappedComponent {...props} />
         }
       }
@@ -20,7 +22,6 @@ export default function Authorization(allowedRoles: string[]) {
 
 function validateRoles(roles: string[], allowedRoles: string[]): boolean  {
   for(let i = 0; i < roles.length; i++) {
-    console.log(roles[i])
     if(allowedRoles.includes(roles[i])) {
       return true
     }

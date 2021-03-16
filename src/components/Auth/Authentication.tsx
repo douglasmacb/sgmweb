@@ -11,3 +11,5 @@ const Authentication = (WrappedComponent: ComponentType) => {
 }
 
 export default Authentication;
+
+

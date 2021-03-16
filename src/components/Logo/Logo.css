@@ -7,6 +7,10 @@
   height: 4rem;
 }
 
+.logo h1 {
+  font-size: 1.4rem;
+}
+
 .logo-text {
   color: #fff;
   justify-self: start;

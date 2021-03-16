@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './CitizenPage.css'
 import { ICitizenService, citizenServicesList } from './CitizenServicesList'
 
@@ -9,12 +10,12 @@ export const CitizenPage: React.FC = () => {
                 <div className="citizen-services">
                     {citizenServicesList.map((service: ICitizenService) => {
                         return (
-                            <a href={service.url} key={service.title}>
+                            <Link to={service.url} key={service.title}>
                                 <div className="citizen-service-item">
                                     <i className={service.cName}></i>
                                     <p>{service.title}</p>
                                 </div>
-                            </a>
+                            </Link>
                         )
                     })}
                 </div>

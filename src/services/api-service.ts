@@ -47,6 +47,11 @@ export class ApiService {
     return localStorage.getItem('token')
   }
 
+  getRoles = (): string[] => {
+    const roles = localStorage.getItem('roles') || ''
+    return JSON.parse(roles) || []
+  }
+
   decode = (token: string): any => {
     return jwtdecode(token)
   }

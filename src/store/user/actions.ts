@@ -19,6 +19,18 @@ export function setToken(token: string) {
     });
 }
 
+export function setEmail(email: string) {
+    return action(Constants.SET_EMAIL, {
+        email
+    });
+}
+
+export function setRoles(roles: string[]) {
+    return action(Constants.SET_ROLES, {
+        roles
+    });
+}
+
 export function setError(error: string) {
     return action(Constants.SET_ERROR, {
         error

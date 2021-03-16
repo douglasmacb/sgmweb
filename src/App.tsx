@@ -22,9 +22,11 @@ function App() {
   const AdminRole = Authorization(['Admin']);
   const dashboardPage = Authentication(AdminRole(DashboardPage))
 
+  Authentication(DashboardPage)
+
   return (
-    <Layout>
-      <Router history={history}>
+    <Router history={history}>
+      <Layout>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={LoginPage} />
@@ -38,8 +40,8 @@ function App() {
           <Route exact path="/logout" component={Logout} />
           <Redirect to="/" />          
         </Switch>
-      </Router>
-    </Layout>
+      </Layout>
+    </Router>
   );
 }
 

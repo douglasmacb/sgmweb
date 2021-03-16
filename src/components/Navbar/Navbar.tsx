@@ -5,6 +5,7 @@ import { Logo } from '../../components'
 import './Navbar.css'
 import { IRootState } from '../../store'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 interface MenuItem {
     title: string
@@ -20,7 +21,7 @@ export const Navbar: React.FC = () => {
     }
 
     const userSelector = (state: IRootState) => state.user
-    const { loggedIn } = useSelector(userSelector)
+    const { email, loggedIn } = useSelector(userSelector)
 
     return (
         <nav className="NavbarItems">
@@ -32,14 +33,18 @@ export const Navbar: React.FC = () => {
                 {MenuItems.map((item: MenuItem, index) => {
                     return (
                         <li key={index}>
-                            <a className={item.cName} href={item.url}>{item.title}</a>
+                            <Link className={item.cName} to={item.url}>{item.title}</Link>
                         </li>
                     )
                 })}
             </ul>
             {!loggedIn ? 
-                <a href="/login"><Button cName="btn-entrar">Entrar</Button></a> :
-                <a href="/logout"><Button cName="btn-entrar">Sair</Button></a>
+                <Link to="/login"><Button cName="btn-entrar">Entrar</Button></Link> 
+                :
+                <div className='navbar-user'>
+                    <p>{email}</p>
+                    <Link to="/logout"><Button cName="btn-entrar">Sair</Button></Link>
+                </div>
             }
             
         </nav>

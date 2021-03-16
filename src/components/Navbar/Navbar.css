@@ -7,11 +7,6 @@
     font-size: 1.2rem;
 }
 
-.fa-react {
-    margin-left: 0.5rem;
-    font-size: 1.6rem;
-}
-
 .nav-menu {
     display: grid;
     grid-template-columns: repeat(5, auto);
@@ -41,6 +36,19 @@
 
 .nav-links-mobile {
     display: none;
+}
+
+.navbar-user {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+}
+
+.navbar-user p {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 1rem;
+    color: orange;
 }
 
 .menu-icon {
@@ -116,6 +124,10 @@
         background: #fff;
         color: #6568F4;
         transition: 250ms;
+    }
+    
+    .navbar-user p {
+        display: none;
     }
 
 }

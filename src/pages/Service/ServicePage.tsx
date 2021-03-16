@@ -30,7 +30,6 @@ class ServicePage extends React.Component<ReduxType> {
     }
 
     handleSubmit = (serviceOrder: IServiceOrderState) => {
-        console.log(serviceOrder)
         const isCreated = this.props.createServiceOrder(serviceOrder)
         if(isCreated) {
             history.push('/service/created')
