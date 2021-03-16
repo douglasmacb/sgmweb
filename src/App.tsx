@@ -12,8 +12,8 @@ import {
   CitizenPage,
   ContactPage,
   ServiceCreatedPage,
+  DashboardPage,
   ProtocolPage,
-  DashboardPage
 } from './pages';
 import './App.css'
 

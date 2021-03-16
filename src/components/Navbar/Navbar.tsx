@@ -21,7 +21,7 @@ export const Navbar: React.FC = () => {
     }
 
     const userSelector = (state: IRootState) => state.user
-    const { email, loggedIn } = useSelector(userSelector)
+    const { email, roles, loggedIn } = useSelector(userSelector)
 
     return (
         <nav className="NavbarItems">
@@ -37,6 +37,11 @@ export const Navbar: React.FC = () => {
                         </li>
                     )
                 })}
+                {roles.includes('Admin') &&
+                    <li key="dashboard">
+                        <Link className="nav-links" to="/dashboard">Dashboard</Link>
+                    </li>
+                }
             </ul>
             {!loggedIn ? 
                 <Link to="/login"><Button cName="btn-entrar">Entrar</Button></Link> 

@@ -1,33 +1,3 @@
-.tax-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 3rem;
-}
-
-.tax-table  {
-    border-collapse: collapse;
-    width: 50%;
-    text-align: center;
-    font-size: 0.9em;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.tax-table thead tr {
-    background-color: black;
-    color: #ffffff;
-}
-
-.tax-table td, th {
-    border: 1px solid #999;
-    padding: 0.5rem;
-}
-
-.tax-table-name {
-    font-weight: bold;
-}
-
-
 .tax-btn {
     margin: 25px;
 }

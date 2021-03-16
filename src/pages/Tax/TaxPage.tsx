@@ -32,8 +32,8 @@ class TaxPage extends React.Component<ReduxType & Props> {
             <>
                 <h2 className="page-title">Consulta de Imposto Territorial</h2>
                 
-                <div className="tax-container">
-                    <table className="tax-table">
+                <div className="table-container">
+                    <table className="table">
                         <thead>
                             <tr>
                             <th>Dados do Responsável</th>
@@ -42,25 +42,25 @@ class TaxPage extends React.Component<ReduxType & Props> {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="tax-table-name">Nome</td>
-                                <td className="tax-table-value">{taxData[0]?.contribuinte?.nome}</td>
+                                <td>Nome</td>
+                                <td>{taxData[0]?.contribuinte?.nome}</td>
                             </tr>
                             {taxData[0]?.contribuinte?.cpf &&
                                 <tr>
-                                    <td className="tax-table-name">CPF</td>
-                                    <td className="tax-table-value">{taxData[0]?.contribuinte?.cpf}</td>
+                                    <td>CPF</td>
+                                    <td>{taxData[0]?.contribuinte?.cpf}</td>
                                 </tr>
                             }
                             {taxData[0]?.contribuinte?.cnpj &&
                                 <tr>
-                                    <td className="tax-table-name">CNPJ</td>
-                                    <td className="tax-table-value">{taxData[0]?.contribuinte?.cnpj}</td>
+                                    <td>CNPJ</td>
+                                    <td>{taxData[0]?.contribuinte?.cnpj}</td>
                                 </tr>
                             }
                         </tbody>
                     </table>
                     <br />
-                    <table className="tax-table">
+                    <table className="table">
                         <thead>
                             <tr>
                                 <th>Dados da Propriedade</th>
@@ -69,32 +69,32 @@ class TaxPage extends React.Component<ReduxType & Props> {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="tax-table-name">Endereço</td>
-                                <td className="tax-table-value">{taxData[0]?.imovel?.endereco?.logradouro}</td>
+                                <td>Endereço</td>
+                                <td>{taxData[0]?.imovel?.endereco?.logradouro}</td>
                             </tr>
                             <tr>
-                                <td className="tax-table-name">Número</td>
-                                <td className="tax-table-value">{taxData[0]?.imovel?.endereco?.numero}</td>
+                                <td>Número</td>
+                                <td>{taxData[0]?.imovel?.endereco?.numero}</td>
                             </tr>
                             <tr>
-                                <td className="tax-table-name">CEP</td>
-                                <td className="tax-table-value">{taxData[0]?.imovel?.endereco?.cep}</td>
+                                <td>CEP</td>
+                                <td>{taxData[0]?.imovel?.endereco?.cep}</td>
                             </tr>
                             <tr>
-                                <td className="tax-table-name">Estado</td>
-                                <td className="tax-table-value">{taxData[0]?.imovel?.endereco?.uf}</td>
+                                <td>Estado</td>
+                                <td>{taxData[0]?.imovel?.endereco?.uf}</td>
                             </tr>
                             <tr>
-                                <td className="tax-table-name">Exercício</td>
-                                <td className="tax-table-value">{taxData[0]?.exercicio}</td>
+                                <td>Exercício</td>
+                                <td>{taxData[0]?.exercicio}</td>
                             </tr>
                             <tr>
-                                <td className="tax-table-name">Tipo do Imposto</td>
-                                <td className="tax-table-value">{taxData[0]?.tipoImposto}</td>
+                                <td>Tipo do Imposto</td>
+                                <td>{taxData[0]?.tipoImposto}</td>
                             </tr>
                             <tr>
-                                <td className="tax-table-name">Valor do Imposto</td>
-                                <td className="tax-table-value">{formatNumberToMoney(taxData[0]?.impostoDevido)}</td>
+                                <td>Valor do Imposto</td>
+                                <td>{formatNumberToMoney(taxData[0]?.impostoDevido)}</td>
                             </tr>
                         </tbody>
                     </table>

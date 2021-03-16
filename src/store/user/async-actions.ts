@@ -33,6 +33,8 @@ export const loginAsync = async (dispatch: Dispatch<UserActions>, email: string,
 export const logoutAsync = async (dispatch: Dispatch<UserActions>): Promise<void> => {
     new ApiService().logout()
     dispatch(actions.setToken(''))
+    dispatch(actions.setRoles([]))
+    dispatch(actions.setEmail(''))
     dispatch(actions.setLoading(false))
     dispatch(actions.setLoggedIn(false))
     dispatch(actions.setError(''))

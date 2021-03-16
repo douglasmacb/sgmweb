@@ -50,3 +50,17 @@ export const searchServiceOrderByProtocol = async (dispatch: Dispatch<ServiceAct
     }
 }
 
+export const fetchAllServiceOrders = async (dispatch: Dispatch<ServiceActions>): Promise<void> => {
+
+    dispatch(actions.setLoading(true));
+
+    try {
+        const { data } = await new ApiService().get(`/servico/solicitacao`)
+        dispatch(actions.setServiceOrder(data))
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(''))
+    } catch(error) {
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(error.response?.data?.error))
+    }
+}
