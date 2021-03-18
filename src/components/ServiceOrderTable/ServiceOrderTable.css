@@ -26,3 +26,16 @@
   border: 1px solid #999;
   padding: 0.5rem;
 }
+
+.service-order-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.service-order-modal h3 {
+  padding-bottom: 2rem;
+}

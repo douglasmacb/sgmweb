@@ -66,3 +66,23 @@ export const fetchAllServiceOrders = async (dispatch: Dispatch<ServiceActions>):
         dispatch(actions.setError(error.response?.data?.error))
     }
 }
+
+
+export const fetchAllServiceStatus = async (dispatch: Dispatch<ServiceActions>): Promise<void> => {
+
+    dispatch(actions.setLoading(true));
+
+    try {
+        const { data } = await new ApiService().get(`/servico/status`)
+
+        dispatch(actions.setStatuses(data))
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(''))
+    } catch(error) {
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(error.response?.data?.error))
+    }
+}
+
+
+

@@ -13,6 +13,7 @@ export function serviceReducer(state: IServiceState = init, action: ServiceActio
         case Constants.SET_SERVICE:
         case Constants.SET_LOADING: 
         case Constants.SET_PROTOCOL:
+        case Constants.SET_STATUSES:
         case Constants.SET_ERROR: 
             return { ...state, ...action.payload }
         case Constants.SET_SERVICE_ORDER:

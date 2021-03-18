@@ -31,3 +31,9 @@ export function setProtocol(protocol: number) {
     });
 }
 
+export function setStatuses(statuses: any[]) {
+    return action(Constants.SET_STATUSES, {
+        statuses
+    });
+}
+

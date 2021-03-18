@@ -39,6 +39,10 @@ export class ApiService {
     return this.fetchPublicApi.put(path, body)
   }
 
+  patch = async (path: string, body?: any): Promise<ApiResponse> => {
+    return this.fetchPublicApi.patch(path, body)
+  }
+
   delete = async (path: string): Promise<ApiResponse> => {
     return this.fetchPublicApi.delete(path)
   }
