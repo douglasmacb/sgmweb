@@ -3,7 +3,7 @@ import { useTable, usePagination, useRowSelect } from 'react-table'
 import './Table.css'
 
 const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, ...rest }, ref) => {
+  ({ indeterminate, rowselected, row, ...rest }, ref) => {
     const defaultRef = React.useRef()
     const resolvedRef = ref || defaultRef
 
@@ -13,13 +13,13 @@ const IndeterminateCheckbox = React.forwardRef(
 
     return (
       <>
-        <input type="checkbox" ref={resolvedRef} {...rest} />
+        <input type="checkbox" ref={resolvedRef} {...rest} onClick={() => rowselected(row)} />
       </>
     )
   }
 )
 
-export const Table = ({ columns, data, cName }) => {
+export const Table = ({ columns, data, cName, rowselected }) => {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
@@ -38,8 +38,7 @@ export const Table = ({ columns, data, cName }) => {
     nextPage,
     previousPage,
     setPageSize,
-    selectedFlatRows,
-    state: { pageIndex, pageSize, selectedRowIds },
+    state: { pageIndex, pageSize },
   } = useTable({ columns, data },
     usePagination,
     useRowSelect,
@@ -59,7 +58,7 @@ export const Table = ({ columns, data, cName }) => {
           // to the render a checkbox
           Cell: ({ row }) => (
             <div>
-              <IndeterminateCheckbox {...row.getToggleRowSelectedProps()} />
+              <IndeterminateCheckbox rowselected={rowselected} row={row} {...row.getToggleRowSelectedProps()} />
             </div>
           ),
         },
@@ -71,21 +70,6 @@ export const Table = ({ columns, data, cName }) => {
   // Render the UI for your table
   return (
     <>
-      <pre>
-        <code>
-          {JSON.stringify(
-            {
-              pageIndex,
-              pageSize,
-              pageCount,
-              canNextPage,
-              canPreviousPage,
-            },
-            null,
-            2
-          )}
-        </code>
-      </pre>
       <table className={cName} {...getTableProps()}>
         <thead>
           {headerGroups.map(headerGroup => (
@@ -156,20 +140,6 @@ export const Table = ({ columns, data, cName }) => {
             </option>
           ))}
         </select>
-        <pre>
-          <code>
-            {JSON.stringify(
-              {
-                selectedRowIds: selectedRowIds,
-                'selectedFlatRows[].original': selectedFlatRows.map(
-                  d => d.original
-                ),
-              },
-              null,
-              2
-            )}
-          </code>
-        </pre>
       </div>
     </>
   )

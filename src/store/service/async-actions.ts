@@ -56,6 +56,8 @@ export const fetchAllServiceOrders = async (dispatch: Dispatch<ServiceActions>):
 
     try {
         const { data } = await new ApiService().get(`/servico/solicitacao`)
+
+        console.log('data', data)
         dispatch(actions.setServiceOrder(data))
         dispatch(actions.setLoading(false))
         dispatch(actions.setError(''))
