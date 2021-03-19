@@ -11,9 +11,10 @@ import { formatDate } from '../../utils/format-number'
 import { Table, Modal, Snackbar } from '../../components'
 import './ServiceOrderTable.css'
 
-const mapStateToProps = ({ service }: IRootState) => {
+const mapStateToProps = ({ service, user }: IRootState) => {
     const { serviceOrderData } = service
-    return { serviceOrderData }
+    const { email } = user
+    return { serviceOrderData, email }
 }
 
 const mapDispatcherToProps = (dispatch: Dispatch<ServiceActions>) => {

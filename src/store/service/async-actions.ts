@@ -41,6 +41,8 @@ export const searchServiceOrderByProtocol = async (dispatch: Dispatch<ServiceAct
 
     try {
         const { data } = await new ApiService().get(`/servico/protocolo/${protocol}`)
+        const historico = await new ApiService().get(`/servico/solicitacao/${data.id}/historico`)
+        data.historico = historico.data
         dispatch(actions.setServiceOrder(data))
         dispatch(actions.setLoading(false))
         dispatch(actions.setError(''))

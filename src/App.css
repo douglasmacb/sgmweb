@@ -26,6 +26,7 @@ body {
     text-align: center;
     font-size: 0.9em;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin-bottom: 2rem;
 }
 
 .table thead tr {
