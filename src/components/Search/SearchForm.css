@@ -22,7 +22,7 @@
 
 .search-form .errors {
     display: flex;
-    color:brown;
+    color:#B8001C;
     font-weight: bold;
     font-size: 11px;
 }

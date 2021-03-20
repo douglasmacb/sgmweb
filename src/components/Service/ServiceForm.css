@@ -21,12 +21,12 @@
 }
 
 .service-forms input {
-  color: black;
+  color: #394141;
   width: 25rem;
 }
 
 .service-forms select, option {
-  color: black;
+  color: #394141;
 }
 
 .service-title {
@@ -44,7 +44,7 @@
 }
 .service-errors {
   margin-bottom: 1rem;
-  color: black;
+  color: #B8001C;
   text-align: center;
 }
 

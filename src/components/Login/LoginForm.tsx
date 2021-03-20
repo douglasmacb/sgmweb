@@ -26,7 +26,6 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
     return (
         <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-title">
-                <i className="fas fa-sign-in-alt" />
                 <h1>Entrar no Sistema</h1>
             </div>
             <input
@@ -34,6 +33,7 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
                 name="email"
                 placeholder="Email"
                 type="text"
+                className={`input-container`}
                 onChange={handleChange}
                 value={values.email}
             />
@@ -43,6 +43,7 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
                 name="password"
                 type="password"
                 placeholder="Senha"
+                className={`input-container`}
                 onChange={handleChange}
                 value={values.password}
             />

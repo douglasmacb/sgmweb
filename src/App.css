@@ -26,5 +26,5 @@ body {
 
 .input-container:focus {
     background-color: rgb(220, 220, 220);
-    border-bottom: 2px solid rgb(177, 177, 177);
+    border-bottom: 2px solid #4CA456;
 }
