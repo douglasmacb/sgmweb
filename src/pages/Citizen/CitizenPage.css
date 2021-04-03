@@ -10,20 +10,22 @@
 }
 
 .citizen-service-item {
-  background-color: royalblue;
+  background-color: #4CA456;
   padding: 1.5rem;
   width: 14rem;
   margin: 1rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .citizen-service-item:hover {
-  margin: 0.5rem;
+  transform: scale(1.05);
+  transform-origin: center center;
   transition: all 0.5s ease;
 }
 
@@ -36,5 +38,5 @@
 
 .citizen-service-item .fas {
   font-size: 5rem;
-  color: orange;
+  color: white;
 }

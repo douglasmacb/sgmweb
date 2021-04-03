@@ -25,6 +25,6 @@ export const Search = withFormik<MyFormProps, FormValues>({
   }),
 
   handleSubmit({ value }: FormValues, { props, setSubmitting, setErrors }) {
-    props.formValues(value)
+    props.formValues(value.replace(/\D/g,''))
   }
 })(SearchForm);

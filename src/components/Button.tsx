@@ -1,9 +1,9 @@
 import React from 'react'
 import './Button.css'
+import { Spinner } from '../components/Spinner/Spinner'
 
 const STYLES = [
     'btn--primary',
-    'btn--secondary',
     'btn--outline',
 ]
 
@@ -16,18 +16,20 @@ const SIZES = [
 export interface Props {
     children?: string
     type?: 'submit' | 'reset' | 'button'
+    loading?: boolean
     onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
     buttonStyle?: string
     buttonSize?: string
     disabled?: boolean
     cName?: string,
-    value?: 'string | number | readonly string[] | undefined'
+    value?: 'string | number | readonly string[] | undefined',
 }
 
-export const Button: React.FC<Props> = (props) =>  {
-    const { 
+export const Button: React.FC<Props> = (props) => {
+    const {
         buttonStyle,
         buttonSize,
+        loading,
         onClick,
         type,
         children,
@@ -37,15 +39,21 @@ export const Button: React.FC<Props> = (props) =>  {
     let checkButtonSize = SIZES[0]
     let checkButtonDisabled = false
 
-    if(buttonStyle && STYLES.includes(buttonStyle)) {
+    if (buttonStyle && STYLES.includes(buttonStyle)) {
         checkButtonStyle = buttonStyle
     }
-    if(buttonSize && SIZES.includes(buttonSize)) {
+    if (buttonSize && SIZES.includes(buttonSize)) {
         checkButtonSize = buttonSize
     }
+
     return (
-        <button className={`btn ${checkButtonStyle} ${checkButtonSize} ${cName}`} disabled={checkButtonDisabled} onClick={onClick} type={type}>
-            {children}
+        <button className={`btn ${checkButtonStyle} ${checkButtonSize} ${cName}`} disabled={checkButtonDisabled || loading} onClick={onClick} type={type}>
+            {
+                (loading
+                    ? <Spinner />
+                    : children
+                )
+            }
         </button>
     )
 }
