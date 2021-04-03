@@ -10,11 +10,11 @@ import history from './history'
 import { 
   HomePage, 
   CitizenPage,
-  ContactPage,
   ServiceCreatedPage,
   DashboardPage,
-  ProtocolPage,
+  ProtocolPage
 } from './pages';
+import ContactPage from './pages/Contact/ContactPage'
 import './App.css'
 
 function App() {

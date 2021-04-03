@@ -49,4 +49,3 @@ class ServicePage extends React.Component<ReduxType> {
 }
 
 export default connect(mapStateToProps, mapDispatcherToProps)(ServicePage)
-
