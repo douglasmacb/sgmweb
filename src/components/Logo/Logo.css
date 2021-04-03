@@ -4,7 +4,6 @@
 
 .logo-image {
   height: 4rem;
-  cursor: pointer;
   justify-self: start;
   margin-left: 20px;
 }
@@ -14,8 +13,6 @@
 }
 
 .logo-text {
-  color: #fff;
   justify-self: start;
   margin-left: 20px;
-  cursor: pointer;
 }
