@@ -87,4 +87,18 @@ export const fetchAllServiceStatus = async (dispatch: Dispatch<ServiceActions>):
 }
 
 
+export const fetchAllServiceContacts = async (dispatch: Dispatch<ServiceActions>): Promise<void> => {
 
+    dispatch(actions.setLoading(true));
+
+    try {
+        const { data } = await new ApiService().get(`/servico/contatos`)
+
+        dispatch(actions.setServiceContacts(data))
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(''))
+    } catch(error) {
+        dispatch(actions.setLoading(false))
+        dispatch(actions.setError(error.response?.data?.error))
+    }
+}

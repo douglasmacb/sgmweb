@@ -3,8 +3,9 @@
 }
 
 .logo-image {
-  width: 4rem;
   height: 4rem;
+  justify-self: start;
+  margin-left: 20px;
 }
 
 .logo h1 {
@@ -12,8 +13,6 @@
 }
 
 .logo-text {
-  color: #fff;
   justify-self: start;
   margin-left: 20px;
-  cursor: pointer;
 }

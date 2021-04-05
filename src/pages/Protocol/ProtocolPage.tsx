@@ -14,26 +14,22 @@ export const ProtocolPage: React.FC = () => {
                 <h2 className='page-title'>Protocolo {serviceOrderData?.protocolo}</h2>
                 <div className="table-container">
                     <h3 className="protocol-title">Solicitação</h3>
-                    <table className="table">
+                    <table className="table-horizontal">
+                        <thead>
+                            <tr>
+                                <th className='table-color'>Serviço</th>
+                                <th className='table-color'>Solicitante</th>
+                                <th className='table-color'>Status</th>
+                                <th className='table-color'>Data</th>
+                                <th className='table-color'>Descrição</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             <tr>
-                                <td>Serviço</td>
                                 <td className="tax-table-value">{serviceOrderData?.servico?.nome || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <td>Solicitante</td>
                                 <td className="tax-table-value">{serviceOrderData?.nomeSolicitante || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <td>Status</td>
                                 <td className="tax-table-value">{serviceOrderData?.status?.nome || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <td>Data</td>
-                                <td className="tax-table-value">{serviceOrderData?.data || 'N/A'}</td>
-                            </tr>
-                            <tr>
-                                <td>Descrição</td>
+                                <td className="tax-table-value">{formatDate(new Date(serviceOrderData?.data)) || 'N/A'}</td>
                                 <td className="tax-table-value">{serviceOrderData?.descricao || 'N/A'}</td>
                             </tr>
                         </tbody>
@@ -42,9 +38,9 @@ export const ProtocolPage: React.FC = () => {
                     <table className="table">
                         <thead>
                             <tr>
-                            <th>Última alteração</th>
-                            <th>Responsável</th>
-                            <th>Status</th>
+                                <th>Última alteração</th>
+                                <th>Responsável</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>

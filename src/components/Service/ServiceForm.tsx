@@ -1,5 +1,4 @@
 import { Button } from '../Button'
-import { Spinner } from '../Spinner/Spinner'
 import { FormikProps } from 'formik'
 import './ServiceForm.css'
 import { FormValues } from './Service'
@@ -26,12 +25,12 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
         handleChange,
         handleSubmit,
     } = props;
-    
+
 
     const serviceStateSelector = (state: IRootState) => state.service
 
     const serviceState: IServiceState = useSelector(serviceStateSelector)
- 
+
     return (
         <div className="service-container">
             <form onSubmit={handleSubmit}>
@@ -40,7 +39,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                         <div className="service-title">
                             <h3>Solicitação</h3>
                         </div>
-                        <select name="servicoId" id="servicoId" value={values.servicoId} onChange={handleChange}>
+                        <select name="servicoId" id="servicoId" className={`input-container`} value={values.servicoId} onChange={handleChange}>
                             {serviceState.serviceData.map((service: IService) => {
                                 return (
                                     <option key={service.id} value={service.id}>{service.nome}</option>
@@ -53,6 +52,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="logradouro"
                             placeholder="Logradouro"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.logradouro}
                         />
@@ -62,6 +62,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="numero"
                             placeholder="Número"
                             type="number"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.numero}
                         />
@@ -72,6 +73,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             placeholder="CEP"
                             mask="99999-999"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.cep}
                         />
@@ -81,6 +83,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="cidade"
                             placeholder="Cidade"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.cidade}
                         />
@@ -90,13 +93,14 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="estado"
                             placeholder="Estado"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.estado}
                         />
                         <div className="service-errors">{errors.estado}</div>
 
                         <label htmlFor="descricao">Descrição da Solicitação: </label>
-                        <textarea id="descricao" value={values.descricao} onChange={handleChange} />
+                        <textarea id="descricao" className={`input-container`} value={values.descricao} onChange={handleChange} />
                         <div className="service-errors">{errors.descricao}</div>
                     </div>
                     <div className="service-item">
@@ -108,6 +112,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="nomeSolicitante"
                             placeholder="Nome do Solicitante"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.nomeSolicitante}
                         />
@@ -117,6 +122,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             name="emailSolicitante"
                             placeholder="Email"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.emailSolicitante}
                         />
@@ -127,6 +133,7 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             mask="(99) 99999-9999"
                             placeholder="Telefone"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.telefoneSolicitante}
                         />
@@ -137,23 +144,24 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                             mask="999.999.999-99"
                             placeholder="CPF"
                             type="text"
+                            className={`input-container`}
                             onChange={handleChange}
                             value={values.cpfSolicitante}
                         />
                         <div className="service-errors">{errors.cpfSolicitante}</div>
                     </div>
-                    
+
                 </div>
-                {serviceState.loading ? <Spinner /> :
-                    <Button 
-                        buttonStyle="btn--primary" 
+                <div className="service-actions">
+                    <Button
+                        buttonStyle="btn--primary"
                         buttonSize="btn--small"
-                        type="submit">
+                        type="submit"
+                        loading={serviceState.loading}>
                         Solicitar
-                    </Button>
-                }
-                {error && <div className="api-errors">{error}</div>}
-                
+                        </Button>
+                    {error && <div className="api-errors">{error}</div>}
+                </div>
             </form>
         </div>
     )

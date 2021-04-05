@@ -47,7 +47,7 @@ export const Navbar: React.FC = () => {
                 <Link to="/login"><Button cName="btn-entrar">Entrar</Button></Link> 
                 :
                 <div className='navbar-user'>
-                    <p>{email}</p>
+                    <p className='email'>{email}</p>
                     <Link to="/logout"><Button cName="btn-entrar">Sair</Button></Link>
                 </div>
             }

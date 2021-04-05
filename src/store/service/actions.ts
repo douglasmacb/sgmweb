@@ -19,6 +19,12 @@ export function setServiceOrder(serviceOrderData: any) {
     });
 }
 
+export function setServiceContacts(serviceContactsData: any) {
+    return action(Constants.SET_SERVICE_CONTACTS, {
+        serviceContactsData
+    });
+}
+
 export function setError(error: string) {
     return action(Constants.SET_ERROR, {
         error

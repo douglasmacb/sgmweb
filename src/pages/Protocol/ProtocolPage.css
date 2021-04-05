@@ -1,3 +1,120 @@
 .protocol-title {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    align-items: flex-start;
 }
+
+.table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.table-horizontal {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-style: hidden;
+    border-collapse: collapse;
+    white-space: nowrap;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 1rem;
+}
+
+.table-horizontal td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.table-horizontal thead tr> :first-child {
+    border-top-left-radius: 5px;
+}
+
+.table-horizontal thead tr> :last-child {
+    border-bottom-left-radius: 5px;
+}
+
+.table-horizontal thead th {
+    height: 60px;
+    color: #ffffff;
+    background: #3E8847;
+}
+
+.table-horizontal tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+.table-horizontal thead,
+.table-horizontal tbody,
+.table-horizontal thead th {
+    display: block;
+}
+
+.table-horizontal thead th:last-child {
+    border-bottom: none;
+}
+
+.table-horizontal thead {
+    float: left;
+}
+
+.table-horizontal tbody {
+    width: auto;
+    position: relative;
+    overflow-x: auto;
+}
+
+.table-horizontal td,
+.table-horizontal th {
+    text-align: center;
+    padding: 8px;
+    padding: 20px .625em .625em .625em;
+    height: 60px;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: auto;
+    font-size: 13px;
+    text-overflow: ellipsis;
+}
+
+.table-horizontal thead th {
+    text-align: left;
+    border-bottom: 1px solid #f7f7f9;
+}
+
+.table-horizontal tbody tr {
+    display: table-horizontal-cell;
+}
+
+.table-horizontal tbody tr:nth-child(odd) {
+    background: none;
+}
+
+.table-horizontal tr:nth-child(even) {
+    background: transparent;
+}
+
+.table-horizontal tr td:nth-child(odd) {
+    background: #F8F8F8;
+    border-right: 1px solid #E6E4E4;
+}
+
+.table-horizontal tr td:nth-child(even) {
+    border-right: 1px solid #E6E4E4;
+}
+
+.table-horizontal tbody td {
+    display: block;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+}
+
+.table-margin {}

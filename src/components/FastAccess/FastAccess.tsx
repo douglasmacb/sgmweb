@@ -40,13 +40,13 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
 
     handleMessage = (message: string) => {
         this.setState({ show: true, message })
-        setTimeout(() => { 
+        setTimeout(() => {
             this.setState({ show: false, message: '' })
-         }, 3000);
+        }, 3000);
     }
 
     redirectToTaxPageOrSendErrorMessage = () => {
-        if(this.props.tax.taxData.length > 0) {
+        if (this.props.tax.taxData.length > 0) {
             history.push('/tax')
         } else {
             this.handleMessage('Dados inválidos!')
@@ -54,7 +54,7 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
     }
 
     searchIPTUByCpfCnpj = async (cpfCnpj: string) => {
-        if(cpfCnpj.length === 14) {
+        if (cpfCnpj.length === 14) {
             await this.props.searchIPTUByCnpj(cpfCnpj)
         } else {
             await this.props.searchIPTUByCpf(cpfCnpj)
@@ -70,7 +70,7 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
     searchProtocol = async (protocol: number) => {
         await this.props.searchServiceOrderByProtocol(protocol)
         const order = this.props.service.serviceOrderData
-        if(order) {
+        if (order) {
             history.push('/protocol')
         } else {
             this.handleMessage('Dados inválidos!')
@@ -82,19 +82,23 @@ class FastAccess extends React.Component<ReduxType, SnackbarState> {
             <div className="fast-access">
                 <h3><i className="fas fa-running"></i> Acesso Rápido</h3>
                 <div className="search-bar">
-                    <Search 
-                        title="Consultar IPTU por CPF / CNPJ" 
-                        formValues={this.searchIPTUByCpfCnpj} 
-                        maxLength={11} 
+                    <Search
+                        title="Consultar IPTU por CPF / CNPJ"
+                        formValues={this.searchIPTUByCpfCnpj}
+                        maxLength={11}
                         loading={this.props.tax.loading}
                     />
-                    <Search 
-                        title="Consultar ITR por CNPJ" 
-                        formValues={this.searchITRByCnpj} 
-                        maxLength={14} 
+                    <Search
+                        title="Consultar ITR por CNPJ"
+                        formValues={this.searchITRByCnpj}
+                        maxLength={14}
                         loading={this.props.tax.loading}
                     />
-                    <Search title="Consultar Protocolo" mask="99999999" formValues={this.searchProtocol} />
+                    <Search
+                        title="Consultar Protocolo"
+                        mask="99999999"
+                        formValues={this.searchProtocol}
+                        loading={this.props.service.loading} />
                 </div>
                 <Snackbar show={this.state.show} message={this.state.message} />
             </div>
