@@ -1,9 +1,10 @@
 import { Button } from '../Button'
-import { Spinner } from '../Spinner/Spinner'
 import { FormikProps } from 'formik'
 import './LoginForm.css'
 
 export interface Props {
+    loading?: boolean
+    error?: string
 }
 
 interface FormValues {
@@ -15,11 +16,12 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
     const {
         values,
         errors,
+        loading,
+        error,
         handleChange,
         handleSubmit,
-        isSubmitting,
     } = props;
- 
+
     return (
         <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-title">
@@ -31,6 +33,7 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
                 name="email"
                 placeholder="Email"
                 type="text"
+                className={`input-container`}
                 onChange={handleChange}
                 value={values.email}
             />
@@ -39,19 +42,21 @@ export const LoginForm = (props: Props & FormikProps<FormValues>) => {
                 id="password"
                 name="password"
                 type="password"
+                className={`input-container`}
                 placeholder="Senha"
                 onChange={handleChange}
                 value={values.password}
             />
             <div className="login-errors">{errors.password}</div>
-            {isSubmitting ? <Spinner /> :
-                <Button 
-                    buttonStyle="btn--primary" 
-                    buttonSize="btn--large"
-                    type="submit">
-                    Entrar
-                </Button>
-            }
+            <Button
+                buttonStyle="btn--primary"
+                buttonSize="btn--large"
+                type="submit"
+                loading={loading}>
+                Entrar
+            </Button>
+            {error && <div className="api-errors">{error}</div>}
+
         </form>
     )
 }

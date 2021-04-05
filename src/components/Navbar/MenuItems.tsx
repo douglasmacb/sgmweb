@@ -6,7 +6,7 @@ export const MenuItems = [
     },
     {
         title: 'Serviços do Cidadão',
-        url: '#',
+        url: '/citizen',
         cName: 'nav-links'
     },
     {

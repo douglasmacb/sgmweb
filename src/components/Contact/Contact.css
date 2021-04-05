@@ -1,0 +1,25 @@
+.list {
+    margin: 0 1.5rem 2rem 1.5rem;
+}
+
+.list> :last-child {
+    border-bottom: none;
+}
+
+.item {
+    list-style: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.5px solid #f7f7f9;
+}
+
+.item .child-primary {
+    color: #394141;
+    font-size: 16px;
+}
+
+.item .child-secondary a {
+    color: #5e6666;
+    font-size: 14px;
+    text-decoration: underline;
+}

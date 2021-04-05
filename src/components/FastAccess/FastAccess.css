@@ -1,0 +1,40 @@
+.fast-access {
+  padding: 25px;
+}
+
+.fast-access h3 {
+  color: #394141;
+  padding-bottom: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.search-bar > form {
+  margin-top: 1rem;
+  flex-grow: 1;
+  margin-right: 2rem;
+}
+
+.search-bar > :last-child { 
+  margin-right: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .search-bar > form {
+    margin-right: 0;
+  }
+  
+  .container {
+      display: block;
+      width: 100%;
+  }
+
+  .search-bar {
+      display: block;
+  }
+}

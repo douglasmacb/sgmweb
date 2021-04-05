@@ -1,22 +1,20 @@
+:root {
+    --primary: #4CA456;
+    --secondary: #3E8847;
+    --tertiary: #394141;
+    --quartenary: #8FD974;
+    --background: white;
+}
+
 .NavbarItems {
-    background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73,63,252, 100%));
+    background: var(--background);
     height: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
-}
-
-.navbar-logo {
-    color: #fff;
-    justify-self: start;
-    margin-left: 20px;
-    cursor: pointer;
-}
-
-.fa-react {
-    margin-left: 0.5rem;
-    font-size: 1.6rem;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
+    transform: translate3d(0, 0, 0px);
 }
 
 .nav-menu {
@@ -31,39 +29,50 @@
 }
 
 .nav-links {
-    color: white;
+    color: var(--primary);
     text-decoration: none;
     padding: 0.5rem 1rem;
 }
 
 .nav-links:hover {
-    background-color: #6d76f7;
-    border-radius: 4px;
+    color: var(--secondary);
     transition: all 0.2s ease-out;
 }
 
 .fa-bars {
-    color: white;
+    color: var(--tertiary);
 }
 
 .nav-links-mobile {
     display: none;
 }
 
+.navbar-user {
+    display: flex;
+    flex-wrap: wrap;
+    width: 20rem;
+}
+
+.navbar-user p {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 1rem;
+    color: var(--tertiary);
+}
+
 .menu-icon {
     display: none;
+}
+
+.email {
+    display: inline;
 }
 
 @media screen and (max-width: 960px) {
     .NavbarItems {
         position: relative;
+        transform: none;
     }
-
-    .navbar-logo {
-        display: block;
-        font-size: 14px;
-    }
-
     .nav-menu {
         display: flex;
         flex-direction: column;
@@ -74,35 +83,24 @@
         left: -100%;
         opacity: 1;
         transition: all 0.5s ease;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.15);
     }
-
     .nav-menu.active {
-        background: #6668f4;
+        background: var(--background);
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
         z-index: 1;
     }
-
     .nav-links {
         text-align: center;
         padding: 2rem;
         width: 100%;
         display: table;
     }
-
     .nav-links:hover {
-        background-color: #7577fa;
-        border-radius: 0;
+        background-color: var(--quartenary);
     }
-
-    .navbar-logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(25%, 50%);
-    }
-
     .menu-icon {
         display: block;
         position: absolute;
@@ -112,12 +110,13 @@
         font-size: 1.8rem;
         cursor: pointer;
     }
-
+    .email {
+        display: none;
+    }
     .fa-times {
-        color: #fff;
+        color: var(--tertiary);
         font-size: 2rem;
     }
-
     .nav-links-mobile {
         display: block;
         text-align: center;
@@ -125,16 +124,13 @@
         margin: 2rem auto;
         border-radius: 4px;
         width: 80%;
-        background: #4ad9e4;
+        background: var(--primary);
         text-decoration: none;
         color: white;
         font-size: 1.5rem;
     }
-
     .nav-links-mobile:hover {
-        background: #fff;
-        color: #6568F4;
+        background: var(--secondary);
         transition: 250ms;
     }
-
 }

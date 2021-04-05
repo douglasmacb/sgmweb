@@ -5,7 +5,7 @@ export const Footer = () => {
 
     return (
         <footer className="footerItems">
-            <h3>Prefeitura de Bom Destino &copy; 2021</h3>
+            <h3>SGM Web &copy; 2021</h3>
             <div className="social-medias">
                 <p>Redes Sociais: </p>
                 <i className="fa fa-facebook-square" aria-hidden="true"></i>

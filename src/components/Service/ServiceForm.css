@@ -1,0 +1,68 @@
+.service-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-forms {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.service-forms input, select, button, textarea {
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
+.service-forms textarea {
+  width: 25rem;
+  height: 10rem;
+  padding: 1rem;
+}
+
+.service-forms input {
+  color: #394141;
+  width: 25rem;
+}
+
+.service-forms select, option {
+  color: #394141;
+}
+
+.service-title {
+  text-align: center;
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.service-item label {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.service-errors {
+  margin-bottom: 1rem;
+  color: #B8001C;
+  text-align: center;
+}
+
+.service-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.service-container > button {
+  height: 40px;
+}
+
+.api-errors {
+  padding-top: 1.5rem;
+  color: #f69e7b;
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -1,7 +1,11 @@
 import * as React from 'react'
 import { MenuItems } from './MenuItems'
 import { Button } from '../Button'
+import { Logo } from '../../components'
 import './Navbar.css'
+import { IRootState } from '../../store'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 interface MenuItem {
     title: string
@@ -16,12 +20,12 @@ export const Navbar: React.FC = () => {
         setClicked(!clicked)
     }
 
+    const userSelector = (state: IRootState) => state.user
+    const { email, roles, loggedIn } = useSelector(userSelector)
+
     return (
         <nav className="NavbarItems">
-            <div className="navbar-logo">
-                <h1>Prefeitura</h1>
-                <h1>Bom Destino</h1>
-            </div>
+            <Logo />
             <div className="menu-icon" onClick={handleClick}>
                 <i className={clicked ? 'fas fa-times' : 'fas fa-bars'}></i>
             </div>
@@ -29,12 +33,25 @@ export const Navbar: React.FC = () => {
                 {MenuItems.map((item: MenuItem, index) => {
                     return (
                         <li key={index}>
-                            <a className={item.cName} href={item.url}>{item.title}</a>
+                            <Link onClick={handleClick} className={item.cName} to={item.url}>{item.title}</Link>
                         </li>
                     )
                 })}
+                {roles.includes('Admin') &&
+                    <li key="dashboard">
+                        <Link onClick={handleClick} className="nav-links" to="/dashboard">Dashboard</Link>
+                    </li>
+                }
             </ul>
-            <a href="/login"><Button cName="btn-entrar">Entrar</Button></a>
+            {!loggedIn ? 
+                <Link to="/login"><Button cName="btn-entrar">Entrar</Button></Link> 
+                :
+                <div className='navbar-user'>
+                    <p className='email'>{email}</p>
+                    <Link to="/logout"><Button cName="btn-entrar">Sair</Button></Link>
+                </div>
+            }
+            
         </nav>
     ) 
 }

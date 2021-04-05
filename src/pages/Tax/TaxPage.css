@@ -1,0 +1,14 @@
+.tax-btn {
+    margin: 25px;
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        display: block;
+        width: 100%;
+    }
+
+    .search-bar {
+        display: block;
+    }
+}

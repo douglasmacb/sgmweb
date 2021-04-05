@@ -1,12 +1,19 @@
+import React from 'react'
+import { RouteProps } from 'react-router'
 import { Navbar, Footer } from '../../components'
 import './Layout.css'
 
-export const Layout: React.FC = ({children}) => {
+interface ILayoutProps {
+  location?: RouteProps["location"];
+  children: RouteProps["children"];
+}
+
+export const Layout: React.FC<ILayoutProps> = (props: ILayoutProps) => {
   return (
     <>
         <Navbar />
         <div className="container">
-          <main>{children}</main>
+          <main>{props.children}</main>
         </div>
         <Footer />
     </>

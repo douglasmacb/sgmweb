@@ -1,0 +1,8 @@
+.service-created { 
+  display: flex;
+  justify-content: center;
+}
+
+.service-created h3 {
+  font-weight: normal;
+}
