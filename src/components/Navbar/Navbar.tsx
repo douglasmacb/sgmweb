@@ -33,13 +33,13 @@ export const Navbar: React.FC = () => {
                 {MenuItems.map((item: MenuItem, index) => {
                     return (
                         <li key={index}>
-                            <Link className={item.cName} to={item.url}>{item.title}</Link>
+                            <Link onClick={handleClick} className={item.cName} to={item.url}>{item.title}</Link>
                         </li>
                     )
                 })}
                 {roles.includes('Admin') &&
                     <li key="dashboard">
-                        <Link className="nav-links" to="/dashboard">Dashboard</Link>
+                        <Link onClick={handleClick} className="nav-links" to="/dashboard">Dashboard</Link>
                     </li>
                 }
             </ul>

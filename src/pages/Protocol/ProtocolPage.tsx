@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { IRootState } from '../../store'
-import { formatDate } from '../../utils/format-number'
+import { formatDate, formatDateWithoutHour } from '../../utils/format-number'
 import './ProtocolPage.css'
 
 export const ProtocolPage: React.FC = () => {
@@ -29,7 +29,7 @@ export const ProtocolPage: React.FC = () => {
                                 <td className="tax-table-value">{serviceOrderData?.servico?.nome || 'N/A'}</td>
                                 <td className="tax-table-value">{serviceOrderData?.nomeSolicitante || 'N/A'}</td>
                                 <td className="tax-table-value">{serviceOrderData?.status?.nome || 'N/A'}</td>
-                                <td className="tax-table-value">{formatDate(new Date(serviceOrderData?.data)) || 'N/A'}</td>
+                                <td className="tax-table-value">{formatDateWithoutHour(serviceOrderData?.data)}</td>
                                 <td className="tax-table-value">{serviceOrderData?.descricao || 'N/A'}</td>
                             </tr>
                         </tbody>
@@ -45,7 +45,7 @@ export const ProtocolPage: React.FC = () => {
                         </thead>
                         <tbody>
                             {serviceOrderData?.historico?.map((historico: any) => ({ ...historico, novaData: formatDate(new Date(historico.data)) })).map((historico: any) => (
-                                <tr>
+                                <tr key={historico.responsavel}>
                                     <td>{historico.novaData}</td>
                                     <td>{historico.responsavel}</td>
                                     <td>{historico.status}</td>

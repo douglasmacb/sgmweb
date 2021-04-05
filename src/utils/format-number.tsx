@@ -13,3 +13,11 @@ export const formatNumberToMoney = (money: number, currency: string = 'pt-BR'): 
 export const formatDate = (date: Date) => {
   return moment(date).format('DD/MM/YYYY HH:mm:ss')
 }
+
+export const formatDateWithoutHour = (date: Date) => {
+  return moment(date).format('DD/MM/YYYY')
+}
+
+export const formatStringToDate = (date: string) => {
+  return moment(date).format('DD/MM/YYYY')
+}

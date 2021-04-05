@@ -7,7 +7,7 @@ import { ServiceActions } from '../../store/service/types'
 import React, { useEffect } from 'react'
 import { ApiService } from '../../services/api-service'
 import { Button } from '../Button'
-import { formatDate } from '../../utils/format-number'
+import { formatStringToDate } from '../../utils/format-number'
 import { Table, Modal, Snackbar } from '../../components'
 import './ServiceOrderTable.css'
 
@@ -63,7 +63,7 @@ const ServiceOrderTable = (props: PropsFromRedux) => {
   const fetchAllServicesOrders = async () => {
     const { data } = await new ApiService().get('/servico/solicitacao')
     const serviceOrders = data.map((item: any) => {
-      let newDate = formatDate(new Date(item.data))
+      let newDate = formatStringToDate(item.data)
       return { ...item, newDate }
     })
     setData(serviceOrders)
