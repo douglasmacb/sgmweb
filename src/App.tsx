@@ -1,6 +1,5 @@
 import { Router, Switch, Route, Redirect } from 'react-router-dom'
 import { Layout } from './components'
-import Authentication from './components/Auth/Authentication';
 import Authorization from './components/Auth/Authorization';
 import LoginPage from './pages/Login/LoginPage'
 import ServicePage from './pages/Service/ServicePage';
@@ -19,10 +18,8 @@ import './App.css'
 
 function App() {
 
-  const AdminRole = Authorization(['Admin']);
-  const dashboardPage = Authentication(AdminRole(DashboardPage))
-
-  Authentication(DashboardPage)
+  const AdminRole = Authorization(['Admin'])
+  const dashboardPage = AdminRole(DashboardPage)
 
   return (
     <Router history={history}>
