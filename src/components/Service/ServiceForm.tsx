@@ -150,7 +150,6 @@ export const ServiceForm = (props: Props & FormikProps<FormValues>) => {
                         />
                         <div className="service-errors">{errors.cpfSolicitante}</div>
                     </div>
-
                 </div>
                 <div className="service-actions">
                     <Button
